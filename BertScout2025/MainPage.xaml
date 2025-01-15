@@ -1,0 +1,444 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:DataType="ContentPage"
+    x:Name="cp"
+    x:Class="BertScout2025.MainPage"
+    BackgroundColor="{AppThemeBinding Light=White, Dark=#003300}"
+    >
+
+    <StackLayout
+        VerticalOptions="Start"
+        >
+
+        <HorizontalStackLayout
+            HorizontalOptions="Center"
+            >
+
+            <Label
+                Text="Match# :"
+                Margin="20,20,0,0"
+                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                />
+
+            <Entry
+                x:Name="MatchNumber"
+                WidthRequest="60"
+                Keyboard="Numeric"
+                MaxLength="3"
+                Margin="4,10,0,0"
+                Text=""
+                IsEnabled="true"
+                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                />
+
+            <Label
+                Text="Team# :"
+                Margin="20,20,0,0"
+                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                />
+
+            <Entry
+                x:Name="TeamNumber"
+                WidthRequest="90"
+                Keyboard="Numeric"
+                MaxLength="5"
+                Margin="4,10,0,0"
+                Text=""
+                IsEnabled="true"
+                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                />
+
+            <Entry
+                x:Name="ScoutName"
+                Placeholder="your name"
+                WidthRequest="160"
+                MaxLength="10"
+                Margin="30,10,0,0"
+                Text=""
+                IsEnabled="true"
+                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                />
+
+            <Button
+                x:Name="Start"
+                Text="Start"
+                Clicked="Start_Clicked"
+                Margin="20,10,0,0"
+                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                />
+
+        </HorizontalStackLayout>
+
+        <ScrollView
+            VerticalOptions="FillAndExpand"
+            >
+
+            <VerticalStackLayout
+                x:Name="FormBody"
+                IsVisible="False"
+                >
+
+                <Label
+                    Text="Autonomous"
+                    Margin="0,10,0,10"
+                    TextColor="White"
+                    BackgroundColor="Green"
+                    HorizontalTextAlignment="Center"
+                    FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                    />
+
+                <HorizontalStackLayout>
+
+                    <VerticalStackLayout>
+
+                        <HorizontalStackLayout
+                            HorizontalOptions="Start"
+                            >
+
+                            <Label
+                                Text="Speaker:"
+                                WidthRequest="{OnPlatform WinUI=150, Android=160}"
+                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                                />
+
+                            <Button
+                                x:Name="ButtonAutoSpeakerMinus" TextColor="Black"
+                                Clicked="ButtonAutoSpeakerMinus_Clicked"
+                                BackgroundColor="LightSteelBlue"
+                                Text=" - "
+                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                            />
+
+                            <Label
+                                x:Name="LabelAutoSpeaker"
+                                Text="0"
+                                FontAttributes="Bold"
+                                HorizontalTextAlignment="End"
+                                WidthRequest="70"
+                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                                />
+
+                            <Button
+                                x:Name="ButtonAutoSpeakerPlus"
+                                Clicked="ButtonAutoSpeakerPlus_Clicked"
+                                Text=" + "
+                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                                />
+
+                            <Button
+                                x:Name="ButtonAutoLeave"
+                                Clicked="ButtonAutoLeave_Clicked"
+                                BackgroundColor="Grey"
+                                WidthRequest="140"
+                                Text="Leave"
+                                Margin="20,0,0,0"
+                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                                />
+
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout
+                            HorizontalOptions="Start"
+                            >
+
+                            <Label
+                                Text="Amp:"
+                                WidthRequest="{OnPlatform WinUI=150, Android=160}"
+                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                                />
+
+                            <Button
+                                x:Name="ButtonAutoAmpMinus" TextColor="Black" 
+                               Clicked="ButtonAutoAmpMinus_Clicked"
+                                BackgroundColor="LightSteelBlue"
+                                Text=" - "
+                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                                />
+
+                            <Label
+                                x:Name="LabelAutoAmp"
+                                Text="0"
+                                FontAttributes="Bold"
+                                HorizontalTextAlignment="End"
+                                WidthRequest="70"
+                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                                />
+
+                            <Button
+                                x:Name="ButtonAutoAmpPlus"
+                                Clicked="ButtonAutoAmpPlus_Clicked"
+                                Text=" + "
+                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                                />
+
+                        </HorizontalStackLayout>
+
+                    </VerticalStackLayout>
+
+                </HorizontalStackLayout>
+
+                <Label
+                    Text="Teleoperated"
+                    Margin="0,10,0,10"
+                    TextColor="White"
+                    BackgroundColor="Green"
+                    HorizontalTextAlignment="Center"
+                    FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                    />
+
+                <HorizontalStackLayout>
+
+                    <VerticalStackLayout>
+
+                        <HorizontalStackLayout
+                            HorizontalOptions="Start"
+                            >
+
+                            <Label
+                                Text="Speaker:"
+                                WidthRequest="{OnPlatform WinUI=150, Android=160}"
+                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                                />
+
+                            <Button
+                                x:Name="ButtonTeleSpeakerMinus" TextColor="Black"
+                                Clicked="ButtonTeleSpeakerMinus_Clicked"
+                                BackgroundColor="LightSteelBlue"
+                                Text=" - "
+                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                                />
+
+                            <Label
+                                x:Name="LabelTeleSpeaker"
+                                Text="0"
+                                FontAttributes="Bold"
+                                HorizontalTextAlignment="End"
+                                WidthRequest="70"
+                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                                />
+
+                            <Button
+                                x:Name="ButtonTeleSpeakerPlus"
+                                Clicked="ButtonTeleSpeakerPlus_Clicked"
+                                Text=" + "
+                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                                />
+
+                            <Button
+                                x:Name="ButtonTeleCoopertition"
+                                Clicked="ButtonTeleCoopertition_Clicked"
+                                BackgroundColor="Grey"
+                                WidthRequest="{OnPlatform WinUI=140, Android=170}"
+                                Text="Coopertition"
+                                Margin="20,0,0,0"
+                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                                />
+
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout
+                            HorizontalOptions="Start"
+                            >
+
+                            <Label
+                                Text="Amp:"
+                                WidthRequest="{OnPlatform WinUI=150, Android=160}"
+                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                                />
+
+                            <Button
+                                x:Name="ButtonTeleAmpMinus" TextColor="Black" 
+                                Clicked="ButtonTeleAmpMinus_Clicked"
+                                BackgroundColor="LightSteelBlue"
+                                Text=" - "
+                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                                />
+
+                            <Label
+                                x:Name="LabelTeleAmp"
+                                Text="0"
+                                FontAttributes="Bold"
+                                HorizontalTextAlignment="End"
+                                WidthRequest="70"
+                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                                />
+
+                            <Button
+                                x:Name="ButtonTeleAmpPlus"
+                                Clicked="ButtonTeleAmpPlus_Clicked"
+                                Text=" + "
+                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                                />
+
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout
+                            HorizontalOptions="Start"
+                            >
+
+                            <Label
+                                Text="Amped Speaker:"
+                                WidthRequest="{OnPlatform WinUI=150, Android=160}"
+                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                                />
+
+                            <Button
+                                x:Name="ButtonTeleAmplifiedMinus" TextColor="Black" 
+                                Clicked="ButtonTeleAmplifiedMinus_Clicked"
+                                BackgroundColor="LightSteelBlue"
+                                Text=" - "
+                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                                />
+
+                            <Label
+                                x:Name="LabelTeleAmplified"
+                                Text="0"
+                                FontAttributes="Bold"
+                                HorizontalTextAlignment="End"
+                                WidthRequest="70"
+                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                                />
+
+                            <Button
+                                x:Name="ButtonTeleAmplifiedPlus"
+                                Clicked="ButtonTeleAmplifiedPlus_Clicked"
+                                Text=" + "
+                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                                />
+
+                        </HorizontalStackLayout>
+
+                    </VerticalStackLayout>
+
+                </HorizontalStackLayout>
+
+                <Label
+                    Text="Endgame"
+                    Margin="0,10,0,5"
+                    TextColor="White"
+                    BackgroundColor="Green"
+                    HorizontalTextAlignment="Center"
+                    FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                    />
+
+                <VerticalStackLayout
+                    VerticalOptions="Start"
+                    >
+
+                    <HorizontalStackLayout
+                        HorizontalOptions="Center"
+                        >
+
+                        <Button
+                            x:Name="ButtonEndgameParked"
+                            Clicked="ButtonEndgameParked_Clicked"
+                            BackgroundColor="Grey"
+                            WidthRequest="100"
+                            Padding="0,0,0,0"
+                            Text="Parked"
+                            FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                            />
+
+                        <Button
+                            x:Name="ButtonEndgameOnStage"
+                            Clicked="ButtonEndgameOnStage_Clicked"
+                            BackgroundColor="Grey"
+                            WidthRequest="120"
+                            Padding="0,0,0,0"
+                            Text="On Stage"
+                            FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                        />
+
+                        <Button
+                            x:Name="ButtonEndgameHarmony"
+                            Clicked="ButtonEndgameHarmony_Clicked"
+                            BackgroundColor="Grey"
+                            WidthRequest="120"
+                            Padding="0,0,0,0"
+                            Text="Harmony"
+                            FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                            />
+
+                        <Button
+                            x:Name="ButtonEndgameSpotlit"
+                            Clicked="ButtonEndgameSpotlit_Clicked"
+                            BackgroundColor="Grey"
+                            WidthRequest="100"
+                            Padding="0,0,0,0"
+                            Text="Spotlit"
+                            FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                            />
+
+                        <Button
+                            x:Name="ButtonEndgameTrap"
+                            Clicked="ButtonEndgameTrap_Clicked"
+                            BackgroundColor="Grey"
+                            WidthRequest="70"
+                            Padding="0,0,0,0"
+                            Text="Trap"
+                            FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                            />
+
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout
+                        Margin="0,5,0,0"
+                        HorizontalOptions="Center"
+                        >
+
+                        <Label
+                            Text="Select comments:"
+                            Margin="10,6,0,0"
+                            FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                            />
+
+                        <Picker
+                            x:Name="CommentPicker"
+                            SelectedIndexChanged="CommentPicker_SelectedIndexChanged"
+                            TextColor="Green"
+                            BackgroundColor="Green"
+                            WidthRequest="100"
+                            HorizontalOptions="CenterAndExpand"
+                            HeightRequest="40"
+                            Margin="10,0,0,5"
+                            FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                            />
+
+                        <Picker
+                            x:Name="ScorePicker"
+                            SelectedIndexChanged="ScorePicker_Picked"
+                            TextColor="Green"
+                            BackgroundColor="Green"
+                            WidthRequest="50"
+                            HorizontalOptions="CenterAndExpand"
+                            HeightRequest="40"
+                            Margin="10,0,0,5"
+                            FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                            />
+
+
+
+                    </HorizontalStackLayout>
+
+                    <Editor
+                        x:Name="Comments"
+                        TextChanged="Comments_TextChanged"
+                        HorizontalOptions="FillAndExpand"
+                        HorizontalTextAlignment="Start"
+                        HeightRequest="150"
+                        BackgroundColor="{AppThemeBinding Light=White, Dark=Green}"
+                        Text=""
+                        FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                        />
+
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
+
+        </ScrollView>
+
+    </StackLayout>
+
+</ContentPage>
