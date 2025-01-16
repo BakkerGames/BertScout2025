@@ -9,10 +9,10 @@ public class TeamMatch : BaseModel
     public int Id { get; set; }
 
     [Indexed(Name = "TeamMatchUnique", Order = 1, Unique = true)]
-    public int TeamNumber { get; set; }
+    public int MatchNumber { get; set; }
 
     [Indexed(Name = "TeamMatchUnique", Order = 2, Unique = true)]
-    public int MatchNumber { get; set; }
+    public int TeamNumber { get; set; }
 
     [Indexed(Unique = true)]
     public string Uuid { get; set; } = "";
@@ -28,32 +28,32 @@ public class TeamMatch : BaseModel
     // autonomous
 
     public bool Auto_Leave { get; set; } = false;
-    public int Auto_Speaker { get; set; }
-    public int Auto_Amp { get; set; }
-    public int Auto_Points { get; set; } = 0;
+    public int Auto_Coral_L1 { get; set; }
+    public int Auto_Coral_L2 { get; set; }
+    public int Auto_Coral_L3 { get; set; }
+    public int Auto_Coral_L4 { get; set; }
+    public int Auto_Processor { get; set; }
+    public int Auto_Net { get; set; }
 
     // teleop
 
-    public int Tele_Speaker { get; set; }
-    public int Tele_Amp { get; set; }
-    public int Tele_Amped_Speaker { get; set; }
+    public int Tele_Coral_L1 { get; set; }
+    public int Tele_Coral_L2 { get; set; }
+    public int Tele_Coral_L3 { get; set; }
+    public int Tele_Coral_L4 { get; set; }
+    public int Tele_Processor { get; set; }
+    public int Tele_Net { get; set; }
     public bool Tele_Coop { get; set; } = false;
-    public int Tele_Points { get; set; } = 0;
 
     // end game
 
-    public bool Endgame_Parked { get; set; }
-    public bool Endgame_OnStage { get; set; }
-    public bool Endgame_Harmony { get; set; }
-    public bool Endgame_Spotlit { get; set; }
-    public bool Endgame_Trap { get; set; }
-    public int Endgame_Points { get; set; } = 0;
+    public bool Endgame_Parked { get; set; } = false;
+    public bool Endgame_Shallow_Cage { get; set; } = false;
+    public bool Endgame_Deep_Cage { get; set; } = false;
 
     // overall
 
     public string Comments { get; set; } = "";
-
-    public int ScoutScore { get; set; } = 0;
 
     public override string ToString()
     {

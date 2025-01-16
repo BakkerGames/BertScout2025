@@ -98,21 +98,21 @@
                             >
 
                             <Label
-                                Text="Speaker:"
+                                Text="Coral:"
                                 WidthRequest="{OnPlatform WinUI=150, Android=160}"
                                 FontSize="{OnPlatform WinUI=Small, Android=Large}"
                                 />
 
                             <Button
-                                x:Name="ButtonAutoSpeakerMinus" TextColor="Black"
-                                Clicked="ButtonAutoSpeakerMinus_Clicked"
+                                x:Name="ButtonAutoCoralL1Minus" TextColor="Black"
+                                Clicked="ButtonAutoCoralL1Minus_Clicked"
                                 BackgroundColor="LightSteelBlue"
                                 Text=" - "
                                 FontSize="{OnPlatform WinUI=Small, Android=Large}"
                             />
 
                             <Label
-                                x:Name="LabelAutoSpeaker"
+                                x:Name="LabelAutoCoralL1"
                                 Text="0"
                                 FontAttributes="Bold"
                                 HorizontalTextAlignment="End"
@@ -121,8 +121,8 @@
                                 />
 
                             <Button
-                                x:Name="ButtonAutoSpeakerPlus"
-                                Clicked="ButtonAutoSpeakerPlus_Clicked"
+                                x:Name="ButtonAutoCoralL1Plus"
+                                Clicked="ButtonAutoCoralL1Plus_Clicked"
                                 Text=" + "
                                 FontSize="{OnPlatform WinUI=Small, Android=Large}"
                                 />
@@ -150,15 +150,15 @@
                                 />
 
                             <Button
-                                x:Name="ButtonAutoAmpMinus" TextColor="Black" 
-                               Clicked="ButtonAutoAmpMinus_Clicked"
+                                x:Name="ButtonAutoProcessorMinus" TextColor="Black" 
+                               Clicked="ButtonAutoProcessorMinus_Clicked"
                                 BackgroundColor="LightSteelBlue"
                                 Text=" - "
                                 FontSize="{OnPlatform WinUI=Small, Android=Large}"
                                 />
 
                             <Label
-                                x:Name="LabelAutoAmp"
+                                x:Name="LabelAutoProcessor"
                                 Text="0"
                                 FontAttributes="Bold"
                                 HorizontalTextAlignment="End"
@@ -167,8 +167,8 @@
                                 />
 
                             <Button
-                                x:Name="ButtonAutoAmpPlus"
-                                Clicked="ButtonAutoAmpPlus_Clicked"
+                                x:Name="ButtonAutoProcessorPlus"
+                                Clicked="ButtonAutoProcessorPlus_Clicked"
                                 Text=" + "
                                 FontSize="{OnPlatform WinUI=Small, Android=Large}"
                                 />
@@ -197,21 +197,21 @@
                             >
 
                             <Label
-                                Text="Speaker:"
+                                Text="Coral Level 1:"
                                 WidthRequest="{OnPlatform WinUI=150, Android=160}"
                                 FontSize="{OnPlatform WinUI=Small, Android=Large}"
                                 />
 
                             <Button
-                                x:Name="ButtonTeleSpeakerMinus" TextColor="Black"
-                                Clicked="ButtonTeleSpeakerMinus_Clicked"
+                                x:Name="ButtonTeleCoralL1Minus" TextColor="Black"
+                                Clicked="ButtonTeleCoralL1Minus_Clicked"
                                 BackgroundColor="LightSteelBlue"
                                 Text=" - "
                                 FontSize="{OnPlatform WinUI=Small, Android=Large}"
                                 />
 
                             <Label
-                                x:Name="LabelTeleSpeaker"
+                                x:Name="LabelTeleCoralL1"
                                 Text="0"
                                 FontAttributes="Bold"
                                 HorizontalTextAlignment="End"
@@ -220,8 +220,8 @@
                                 />
 
                             <Button
-                                x:Name="ButtonTeleSpeakerPlus"
-                                Clicked="ButtonTeleSpeakerPlus_Clicked"
+                                x:Name="ButtonTeleCoralL1Plus"
+                                Clicked="ButtonTeleCoralL1Plus_Clicked"
                                 Text=" + "
                                 FontSize="{OnPlatform WinUI=Small, Android=Large}"
                                 />
@@ -243,21 +243,21 @@
                             >
 
                             <Label
-                                Text="Amp:"
+                                Text="Processor:"
                                 WidthRequest="{OnPlatform WinUI=150, Android=160}"
                                 FontSize="{OnPlatform WinUI=Small, Android=Large}"
                                 />
 
                             <Button
-                                x:Name="ButtonTeleAmpMinus" TextColor="Black" 
-                                Clicked="ButtonTeleAmpMinus_Clicked"
+                                x:Name="ButtonTeleProcessorMinus" TextColor="#00a840"
+                                Clicked="ButtonTeleProcessorMinus_Clicked"
                                 BackgroundColor="LightSteelBlue"
                                 Text=" - "
                                 FontSize="{OnPlatform WinUI=Small, Android=Large}"
                                 />
 
                             <Label
-                                x:Name="LabelTeleAmp"
+                                x:Name="LabelTeleProcessor"
                                 Text="0"
                                 FontAttributes="Bold"
                                 HorizontalTextAlignment="End"
@@ -266,44 +266,8 @@
                                 />
 
                             <Button
-                                x:Name="ButtonTeleAmpPlus"
-                                Clicked="ButtonTeleAmpPlus_Clicked"
-                                Text=" + "
-                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
-                                />
-
-                        </HorizontalStackLayout>
-
-                        <HorizontalStackLayout
-                            HorizontalOptions="Start"
-                            >
-
-                            <Label
-                                Text="Amped Speaker:"
-                                WidthRequest="{OnPlatform WinUI=150, Android=160}"
-                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
-                                />
-
-                            <Button
-                                x:Name="ButtonTeleAmplifiedMinus" TextColor="Black" 
-                                Clicked="ButtonTeleAmplifiedMinus_Clicked"
-                                BackgroundColor="LightSteelBlue"
-                                Text=" - "
-                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
-                                />
-
-                            <Label
-                                x:Name="LabelTeleAmplified"
-                                Text="0"
-                                FontAttributes="Bold"
-                                HorizontalTextAlignment="End"
-                                WidthRequest="70"
-                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
-                                />
-
-                            <Button
-                                x:Name="ButtonTeleAmplifiedPlus"
-                                Clicked="ButtonTeleAmplifiedPlus_Clicked"
+                                x:Name="ButtonTeleProcessorPlus"
+                                Clicked="ButtonTeleProcessorPlus_Clicked"
                                 Text=" + "
                                 FontSize="{OnPlatform WinUI=Small, Android=Large}"
                                 />
@@ -342,42 +306,22 @@
                             />
 
                         <Button
-                            x:Name="ButtonEndgameOnStage"
-                            Clicked="ButtonEndgameOnStage_Clicked"
-                            BackgroundColor="Grey"
-                            WidthRequest="120"
-                            Padding="0,0,0,0"
-                            Text="On Stage"
-                            FontSize="{OnPlatform WinUI=Small, Android=Large}"
-                        />
-
-                        <Button
-                            x:Name="ButtonEndgameHarmony"
-                            Clicked="ButtonEndgameHarmony_Clicked"
-                            BackgroundColor="Grey"
-                            WidthRequest="120"
-                            Padding="0,0,0,0"
-                            Text="Harmony"
-                            FontSize="{OnPlatform WinUI=Small, Android=Large}"
-                            />
-
-                        <Button
-                            x:Name="ButtonEndgameSpotlit"
-                            Clicked="ButtonEndgameSpotlit_Clicked"
+                            x:Name="ButtonEndgameShallowCage"
+                            Clicked="ButtonEndgameShallowCage_Clicked"
                             BackgroundColor="Grey"
                             WidthRequest="100"
                             Padding="0,0,0,0"
-                            Text="Spotlit"
+                            Text="Parked"
                             FontSize="{OnPlatform WinUI=Small, Android=Large}"
                             />
 
                         <Button
-                            x:Name="ButtonEndgameTrap"
-                            Clicked="ButtonEndgameTrap_Clicked"
+                            x:Name="ButtonEndgameDeepCage"
+                            Clicked="ButtonEndgameDeepCage_Clicked"
                             BackgroundColor="Grey"
-                            WidthRequest="70"
+                            WidthRequest="100"
                             Padding="0,0,0,0"
-                            Text="Trap"
+                            Text="Parked"
                             FontSize="{OnPlatform WinUI=Small, Android=Large}"
                             />
 

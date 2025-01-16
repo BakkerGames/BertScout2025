@@ -134,23 +134,6 @@ namespace BertScout2025
             // store the screen fields into the record
             StoreFields(item);
 
-            item.Auto_Points = 0;
-            item.Auto_Points += item.Auto_Amp * 2;
-            item.Auto_Points += item.Auto_Speaker * 5;
-            if (item.Auto_Leave) item.Auto_Points += 2;
-
-            item.Tele_Points = 0;
-            item.Tele_Points += item.Tele_Amp;
-            item.Tele_Points += item.Tele_Speaker * 2;
-            item.Tele_Points += item.Tele_Amped_Speaker * 5;
-
-            item.Endgame_Points = 0;
-            item.Endgame_Points += (item.Endgame_Trap ? 5 : 0);
-            item.Endgame_Points += (item.Endgame_Parked ? 1 : 0);
-            item.Endgame_Points += (item.Endgame_OnStage ? 3 : 0);
-            item.Endgame_Points += (item.Endgame_Spotlit ? 1 : 0);
-            item.Endgame_Points += (item.Endgame_Harmony ? 2 : 0);
-
             // save to database
             item.Changed = true;
             var taskSave = Task.Run(() => db.SaveItemAsync(item));
@@ -172,13 +155,13 @@ namespace BertScout2025
 
         // Autonomous
 
-        private void ButtonAutoSpeakerMinus_Clicked(object sender, EventArgs e)
+        private void ButtonAutoCoralL1Minus_Clicked(object sender, EventArgs e)
         {
             if
-                (item.Auto_Speaker > 0)
+                (item.Auto_Coral_L1 > 0)
             {
-                item.Auto_Speaker--;
-                LabelAutoSpeaker.Text = item.Auto_Speaker.ToString();
+                item.Auto_Coral_L1--;
+                LabelAutoCoralL1.Text = item.Auto_Coral_L1.ToString();
                 SaveFields();
             }
         }
@@ -192,31 +175,31 @@ namespace BertScout2025
             else if (Comments.Text.Length > 0 && !Comments.Text.EndsWith(' '))
                 Comments.Text += " ";
             Comments.Text += ScorePicker.SelectedItem.ToString() + ". ";
-            item.ScoutScore += int.Parse(ScorePicker.SelectedItem?.ToString() ?? "0");
+            //item.ScoutScore += int.Parse(ScorePicker.SelectedItem?.ToString() ?? "0");
             ScorePicker.SelectedIndex = -1;
             SaveFields();
         }
-        private void ButtonAutoSpeakerPlus_Clicked(object sender, EventArgs e)
+        private void ButtonAutoCoralL1Plus_Clicked(object sender, EventArgs e)
         {
-            item.Auto_Speaker++;
-            LabelAutoSpeaker.Text = item.Auto_Speaker.ToString();
+            item.Auto_Coral_L1++;
+            LabelAutoCoralL1.Text = item.Auto_Coral_L1.ToString();
             SaveFields();
         }
 
-        private void ButtonAutoAmpMinus_Clicked(object sender, EventArgs e)
+        private void ButtonAutoProcessorMinus_Clicked(object sender, EventArgs e)
         {
             if
-                (item.Auto_Amp > 0)
+                (item.Auto_Processor > 0)
             {
-                item.Auto_Amp--;
-                LabelAutoAmp.Text = item.Auto_Amp.ToString();
+                item.Auto_Processor--;
+                LabelAutoProcessor.Text = item.Auto_Processor.ToString();
                 SaveFields();
             }
         }
-        private void ButtonAutoAmpPlus_Clicked(object sender, EventArgs e)
+        private void ButtonAutoProcessorPlus_Clicked(object sender, EventArgs e)
         {
-            item.Auto_Amp++;
-            LabelAutoAmp.Text = item.Auto_Amp.ToString();
+            item.Auto_Processor++;
+            LabelAutoProcessor.Text = item.Auto_Processor.ToString();
             SaveFields();
         }
 
@@ -229,53 +212,37 @@ namespace BertScout2025
 
         // Teleop
 
-        private void ButtonTeleSpeakerMinus_Clicked(object sender, EventArgs e)
+        private void ButtonTeleCoralL1Minus_Clicked(object sender, EventArgs e)
         {
             if
-                (item.Tele_Speaker > 0)
+                (item.Tele_Coral_L1 > 0)
             {
-                item.Tele_Speaker--;
-                LabelTeleSpeaker.Text = item.Tele_Speaker.ToString();
+                item.Tele_Coral_L1--;
+                LabelTeleCoralL1.Text = item.Tele_Coral_L1.ToString();
                 SaveFields();
             }
         }
-        private void ButtonTeleSpeakerPlus_Clicked(object sender, EventArgs e)
+        private void ButtonTeleCoralL1Plus_Clicked(object sender, EventArgs e)
         {
-            item.Tele_Speaker++;
-            LabelTeleSpeaker.Text = item.Tele_Speaker.ToString();
+            item.Tele_Coral_L1++;
+            LabelTeleCoralL1.Text = item.Tele_Coral_L1.ToString();
             SaveFields();
         }
 
-        private void ButtonTeleAmpMinus_Clicked(object sender, EventArgs e)
+        private void ButtonTeleProcessorMinus_Clicked(object sender, EventArgs e)
         {
             if
-                (item.Tele_Amp > 0)
+                (item.Tele_Processor > 0)
             {
-                item.Tele_Amp--;
-                LabelTeleAmp.Text = item.Tele_Amp.ToString();
+                item.Tele_Processor--;
+                LabelTeleProcessor.Text = item.Tele_Processor.ToString();
                 SaveFields();
             }
         }
-        private void ButtonTeleAmpPlus_Clicked(object sender, EventArgs e)
+        private void ButtonTeleProcessorPlus_Clicked(object sender, EventArgs e)
         {
-            item.Tele_Amp++;
-            LabelTeleAmp.Text = item.Tele_Amp.ToString();
-            SaveFields();
-        }
-
-        private void ButtonTeleAmplifiedMinus_Clicked(object sender, EventArgs e)
-        {
-            if (item.Tele_Amped_Speaker > 0)
-            {
-                item.Tele_Amped_Speaker--;
-                LabelTeleAmplified.Text = item.Tele_Amped_Speaker.ToString();
-                SaveFields();
-            }
-        }
-        private void ButtonTeleAmplifiedPlus_Clicked(object sender, EventArgs e)
-        {
-            item.Tele_Amped_Speaker++;
-            LabelTeleAmplified.Text = item.Tele_Amped_Speaker.ToString();
+            item.Tele_Processor++;
+            LabelTeleProcessor.Text = item.Tele_Processor.ToString();
             SaveFields();
         }
 
@@ -293,42 +260,42 @@ namespace BertScout2025
             SetButton_Parked(!item.Endgame_Parked);
             if (item.Endgame_Parked)
             {
-                SetButton_OnStage(false);
-                SetButton_Harmony(false);
-                SetButton_Spotlit(false);
+                //SetButton_OnStage(false);
+                //SetButton_Harmony(false);
+                //SetButton_Spotlit(false);
             }
             SaveFields();
         }
 
-        private void ButtonEndgameOnStage_Clicked(object sender, EventArgs e)
+        private void ButtonEndgameShallowCage_Clicked(object sender, EventArgs e)
         {
-            SetButton_OnStage(!item.Endgame_OnStage);
-            if (item.Endgame_OnStage)
+            SetButton_OnStage(!item.Endgame_Shallow_Cage);
+            if (item.Endgame_Shallow_Cage)
             {
                 SetButton_Parked(false);
             }
             SaveFields();
         }
 
-        private void ButtonEndgameTrap_Clicked(object sender, EventArgs e)
+        private void ButtonEndgameDeepCage_Clicked(object sender, EventArgs e)
         {
-            item.Endgame_Trap = !item.Endgame_Trap;
-            switch (item.Endgame_Trap)
-            {
-                case false:
-                    ButtonEndgameTrap.BackgroundColor = Colors.Gray;
-                    break;
-                case true:
-                    ButtonEndgameTrap.BackgroundColor = Colors.Green;
-                    break;
-            }
-            SaveFields();
+            //item.Endgame_Trap = !item.Endgame_Trap;
+            //switch (item.Endgame_Trap)
+            //{
+            //    case false:
+            //        ButtonEndgameTrap.BackgroundColor = Colors.Gray;
+            //        break;
+            //    case true:
+            //        ButtonEndgameTrap.BackgroundColor = Colors.Green;
+            //        break;
+            //}
+            //SaveFields();
         }
 
         private void ButtonEndgameHarmony_Clicked(object sender, EventArgs e)
         {
-            SetButton_Harmony(!item.Endgame_Harmony);
-            if (item.Endgame_Harmony)
+            SetButton_Harmony(!item.Endgame_Deep_Cage);
+            if (item.Endgame_Deep_Cage)
             {
                 SetButton_OnStage(true);
                 SetButton_Parked(false);
@@ -336,16 +303,16 @@ namespace BertScout2025
             SaveFields();
         }
 
-        private void ButtonEndgameSpotlit_Clicked(object sender, EventArgs e)
-        {
-            SetButton_Spotlit(!item.Endgame_Spotlit);
-            if (item.Endgame_Spotlit)
-            {
-                SetButton_OnStage(true);
-                SetButton_Parked(false);
-            }
-            SaveFields();
-        }
+        //private void ButtonEndgameSpotlit_Clicked(object sender, EventArgs e)
+        //{
+        //    SetButton_Spotlit(!item.Endgame_Spotlit);
+        //    if (item.Endgame_Spotlit)
+        //    {
+        //        SetButton_OnStage(true);
+        //        SetButton_Parked(false);
+        //    }
+        //    SaveFields();
+        //}
 
         private void Comments_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -362,26 +329,26 @@ namespace BertScout2025
 
         private void SetButton_OnStage(bool value)
         {
-            item.Endgame_OnStage = value;
-            ButtonEndgameOnStage.BackgroundColor = (value ? Colors.Green : Colors.Gray);
+            //item.Endgame_Shallow_Cage = value;
+            //ButtonEndgameOnStage.BackgroundColor = (value ? Colors.Green : Colors.Gray);
         }
 
         private void SetButton_Harmony(bool value)
         {
-            item.Endgame_Harmony = value;
-            ButtonEndgameHarmony.BackgroundColor = (value ? Colors.Green : Colors.Gray);
+            //item.Endgame_Deep_Cage = value;
+            //ButtonEndgameHarmony.BackgroundColor = (value ? Colors.Green : Colors.Gray);
         }
 
         private void SetButton_Spotlit(bool value)
         {
-            item.Endgame_Spotlit = value;
-            ButtonEndgameSpotlit.BackgroundColor = (value ? Colors.Green : Colors.Gray);
+            //item.Endgame_Spotlit = value;
+            //ButtonEndgameSpotlit.BackgroundColor = (value ? Colors.Green : Colors.Gray);
         }
 
         private void SetButton_Trap(bool value)
         {
-            item.Endgame_Trap = value;
-            ButtonEndgameTrap.BackgroundColor = (value ? Colors.Green : Colors.Gray);
+            //item.Endgame_Trap = value;
+            //ButtonEndgameTrap.BackgroundColor = (value ? Colors.Green : Colors.Gray);
         }
 
         #endregion
