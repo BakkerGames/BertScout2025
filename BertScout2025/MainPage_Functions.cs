@@ -10,8 +10,8 @@ public partial class MainPage
         MatchNumber.IsEnabled = enable;
         FormBody.IsVisible = !enable;
         Start.Text = enable ? "Start" : "Save";
-        TeamNumber.TextColor = enable ? Colors.Black : Colors.Gray;
-        MatchNumber.TextColor = enable ? Colors.Black : Colors.Gray;
+        TeamNumber.TextColor = enable ? Colors.White : Colors.Gray;
+        MatchNumber.TextColor = enable ? Colors.White : Colors.Gray;
     }
 
     public static bool ValidateTeamNumber(string teamNumber)
@@ -45,9 +45,14 @@ public partial class MainPage
         if (string.IsNullOrWhiteSpace(scoutName))
         {
             return false;
-        } else if (scoutName.ToLower() == "nft")
+        }
+        else if (scoutName.Equals("nft", StringComparison.OrdinalIgnoreCase))
         {
             throw new SystemException("Crash!");
+        }
+        else if (scoutName.Equals("skibidi", StringComparison.OrdinalIgnoreCase))
+        {
+            throw new SystemException("No.");
         }
         return true;
     }
