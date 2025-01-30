@@ -5,14 +5,10 @@ namespace BertScout2025.Models;
 
 public class TeamMatch : BaseModel
 {
+    #region IDs
+
     [PrimaryKey, AutoIncrement]
     public int Id { get; set; }
-
-    [Indexed(Name = "TeamMatchUnique", Order = 1, Unique = true)]
-    public int MatchNumber { get; set; }
-
-    [Indexed(Name = "TeamMatchUnique", Order = 2, Unique = true)]
-    public int TeamNumber { get; set; }
 
     [Indexed(Unique = true)]
     public string Uuid { get; set; } = "";
@@ -22,6 +18,13 @@ public class TeamMatch : BaseModel
     public bool Changed { get; set; }
 
     public bool Deleted { get; set; }
+    #endregion
+
+    [Indexed(Name = "TeamMatchUnique", Order = 1, Unique = true)]
+    public int MatchNumber { get; set; }
+
+    [Indexed(Name = "TeamMatchUnique", Order = 2, Unique = true)]
+    public int TeamNumber { get; set; }
 
     public string ScoutName { get; set; } = "";
 
@@ -33,7 +36,7 @@ public class TeamMatch : BaseModel
     public int Auto_Coral_L3 { get; set; }
     public int Auto_Coral_L4 { get; set; }
     public int Auto_Processor { get; set; }
-    public int Auto_Net { get; set; }
+    public int Auto_Barge { get; set; }
 
     // teleop
 
@@ -42,8 +45,7 @@ public class TeamMatch : BaseModel
     public int Tele_Coral_L3 { get; set; }
     public int Tele_Coral_L4 { get; set; }
     public int Tele_Processor { get; set; }
-    public int Tele_Net { get; set; }
-    public bool Tele_Coop { get; set; } = false;
+    public int Tele_Barge { get; set; }
 
     // end game
 

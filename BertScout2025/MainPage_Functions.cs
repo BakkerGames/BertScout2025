@@ -66,9 +66,7 @@ public partial class MainPage
 
         LabelTeleCoralL1.Text = item.Tele_Coral_L1.ToString();
         LabelTeleProcessor.Text = item.Tele_Processor.ToString();
-        LabelTeleProcessor.Text = item.Tele_Net.ToString();
-
-        ButtonTeleCoopertition.BackgroundColor = item.Tele_Coop ? Colors.Green : Colors.Gray;
+        LabelTeleProcessor.Text = item.Tele_Barge.ToString();
 
         ButtonEndgameParked.BackgroundColor = item.Endgame_Parked ? Colors.Green : Colors.Gray;
         //ButtonEndgameOnStage.BackgroundColor = item.Endgame_Shallow_Cage ? Colors.Green : Colors.Gray;

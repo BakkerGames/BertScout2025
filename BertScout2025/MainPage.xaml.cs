@@ -13,17 +13,17 @@ namespace BertScout2025
         {
             InitializeComponent();
             CommentPicker.Items.Clear();
-            ScorePicker.Items.Clear();
+            //ScorePicker.Items.Clear();
 
             foreach (string s in CommentList)
             {
                 CommentPicker.Items.Add(s);
             }
 
-            foreach (string s in ScoringList)
-            {
-                ScorePicker.Items.Add(s);
-            }
+            //foreach (string s in ScoringList)
+            //{
+            //    ScorePicker.Items.Add(s);
+            //}
         }
         private void MainPage_Loaded(object sender, EventArgs e)
         {
@@ -166,19 +166,6 @@ namespace BertScout2025
             }
         }
 
-        private void ScorePicker_Picked(object sender, EventArgs e)
-        {
-            if (ScorePicker.SelectedIndex < 0)
-                return;
-            if (Comments.Text == null)
-                Comments.Text = "";
-            else if (Comments.Text.Length > 0 && !Comments.Text.EndsWith(' '))
-                Comments.Text += " ";
-            Comments.Text += ScorePicker.SelectedItem.ToString() + ". ";
-            //item.ScoutScore += int.Parse(ScorePicker.SelectedItem?.ToString() ?? "0");
-            ScorePicker.SelectedIndex = -1;
-            SaveFields();
-        }
         private void ButtonAutoCoralL1Plus_Clicked(object sender, EventArgs e)
         {
             item.Auto_Coral_L1++;
@@ -186,6 +173,73 @@ namespace BertScout2025
             SaveFields();
         }
 
+        private void ButtonAutoCoralL2Minus_Clicked(object sender, EventArgs e)
+        {
+            if
+                (item.Auto_Coral_L2 > 0)
+            {
+                item.Auto_Coral_L2--;
+                LabelAutoCoralL2.Text = item.Auto_Coral_L2.ToString();
+                SaveFields();
+            }
+        }
+
+        private void ButtonAutoCoralL2Plus_Clicked(object sender, EventArgs e)
+        {
+            item.Auto_Coral_L2++;
+            LabelAutoCoralL2.Text = item.Auto_Coral_L2.ToString();
+            SaveFields();
+        }
+
+        private void ButtonAutoCoralL3Minus_Clicked(object sender, EventArgs e)
+        {
+            if
+                (item.Auto_Coral_L3 > 0)
+            {
+                item.Auto_Coral_L3--;
+                LabelAutoCoralL3.Text = item.Auto_Coral_L3.ToString();
+                SaveFields();
+            }
+        }
+
+        private void ButtonAutoCoralL3Plus_Clicked(object sender, EventArgs e)
+        {
+            item.Auto_Coral_L3++;
+            LabelAutoCoralL3.Text = item.Auto_Coral_L3.ToString();
+            SaveFields();
+        }
+
+        private void ButtonAutoCoralL4Minus_Clicked(object sender, EventArgs e)
+        {
+            if
+                (item.Auto_Coral_L4 > 0)
+            {
+                item.Auto_Coral_L4--;
+                LabelAutoCoralL4.Text = item.Auto_Coral_L4.ToString();
+                SaveFields();
+            }
+        }
+
+        private void ButtonAutoCoralL4Plus_Clicked(object sender, EventArgs e)
+        {
+            item.Auto_Coral_L4++;
+            LabelAutoCoralL4.Text = item.Auto_Coral_L4.ToString();
+            SaveFields();
+        }
+
+        //private void ScorePicker_Picked(object sender, EventArgs e)
+        //{
+        //    if (ScorePicker.SelectedIndex < 0)
+        //        return;
+        //    if (Comments.Text == null)
+        //        Comments.Text = "";
+        //    else if (Comments.Text.Length > 0 && !Comments.Text.EndsWith(' '))
+        //        Comments.Text += " ";
+        //    Comments.Text += ScorePicker.SelectedItem.ToString() + ". ";
+        //    //item.ScoutScore += int.Parse(ScorePicker.SelectedItem?.ToString() ?? "0");
+        //    ScorePicker.SelectedIndex = -1;
+        //    SaveFields();
+        //}
         private void ButtonAutoProcessorMinus_Clicked(object sender, EventArgs e)
         {
             if
@@ -243,13 +297,6 @@ namespace BertScout2025
         {
             item.Tele_Processor++;
             LabelTeleProcessor.Text = item.Tele_Processor.ToString();
-            SaveFields();
-        }
-
-        private void ButtonTeleCoopertition_Clicked(object sender, EventArgs e)
-        {
-            item.Tele_Coop = !item.Tele_Coop;
-            ButtonTeleCoopertition.BackgroundColor = (item.Tele_Coop ? Colors.Green : Colors.Gray);
             SaveFields();
         }
 
