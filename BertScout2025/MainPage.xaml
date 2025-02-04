@@ -94,38 +94,8 @@
                     <VerticalStackLayout>
 
                         <HorizontalStackLayout
-                            HorizontalOptions="Start"
+                            HorizontalOptions="Center"
                             >
-
-                            <Label
-                                Text="Coral L1:"
-                                WidthRequest="{OnPlatform WinUI=150, Android=160}"
-                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
-                                />
-
-                            <Button
-                                x:Name="ButtonAutoCoralL1Minus" TextColor="Black"
-                                Clicked="ButtonAutoCoralL1Minus_Clicked"
-                                BackgroundColor="LightSteelBlue"
-                                Text=" - "
-                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
-                            />
-
-                            <Label
-                                x:Name="LabelAutoCoralL1"
-                                Text="0"
-                                FontAttributes="Bold"
-                                HorizontalTextAlignment="End"
-                                WidthRequest="70"
-                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
-                                />
-
-                            <Button
-                                x:Name="ButtonAutoCoralL1Plus"
-                                Clicked="ButtonAutoCoralL1Plus_Clicked"
-                                Text=" + "
-                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
-                                />
 
                             <Button
                                 x:Name="ButtonAutoLeave"
@@ -144,7 +114,45 @@
                             >
 
                             <Label
+                                Text="Coral L1:"
+                                VerticalTextAlignment="Center"
+                                WidthRequest="{OnPlatform WinUI=150, Android=160}"
+                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                                />
+
+                            <Button
+                                x:Name="ButtonAutoCoralL1Minus" TextColor="Black"
+                                Clicked="ButtonAutoCoralL1Minus_Clicked"
+                                BackgroundColor="LightSteelBlue"
+                                Text=" - "
+                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                            />
+
+                            <Label
+                                x:Name="LabelAutoCoralL1"
+                                Text="0"
+                                FontAttributes="Bold"
+                                HorizontalTextAlignment="Center"
+                                WidthRequest="70"
+                                FontSize="{OnPlatform WinUI=Large, Android=Large}"
+                                />
+
+                            <Button
+                                x:Name="ButtonAutoCoralL1Plus"
+                                Clicked="ButtonAutoCoralL1Plus_Clicked"
+                                Text=" + "
+                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                                />
+
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout
+                            HorizontalOptions="Start"
+                            >
+
+                            <Label
                                 Text="Coral L2:"
+                                VerticalTextAlignment="Center"
                                 WidthRequest="{OnPlatform WinUI=150, Android=160}"
                                 FontSize="{OnPlatform WinUI=Small, Android=Large}"
                                 />
@@ -161,9 +169,9 @@
                                 x:Name="LabelAutoCoralL2"
                                 Text="0"
                                 FontAttributes="Bold"
-                                HorizontalTextAlignment="End"
+                                HorizontalTextAlignment="Center"
                                 WidthRequest="70"
-                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                                FontSize="{OnPlatform WinUI=Large, Android=Large}"
                                 />
 
                             <Button
@@ -181,6 +189,7 @@
 
                             <Label
                                 Text="Coral L3:"
+                                VerticalTextAlignment="Center"
                                 WidthRequest="{OnPlatform WinUI=150, Android=160}"
                                 FontSize="{OnPlatform WinUI=Small, Android=Large}"
                                 />
@@ -197,9 +206,9 @@
                                 x:Name="LabelAutoCoralL3"
                                 Text="0"
                                 FontAttributes="Bold"
-                                HorizontalTextAlignment="End"
+                                HorizontalTextAlignment="Center"
                                 WidthRequest="70"
-                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                                FontSize="{OnPlatform WinUI=Large, Android=Large}"
                                 />
 
                             <Button
@@ -211,12 +220,13 @@
 
                         </HorizontalStackLayout>
 
-                                                <HorizontalStackLayout
+                        <HorizontalStackLayout
                             HorizontalOptions="Start"
                             >
 
                             <Label
                                 Text="Coral L4:"
+                                VerticalTextAlignment="Center"
                                 WidthRequest="{OnPlatform WinUI=150, Android=160}"
                                 FontSize="{OnPlatform WinUI=Small, Android=Large}"
                                 />
@@ -227,15 +237,15 @@
                                 BackgroundColor="LightSteelBlue"
                                 Text=" - "
                                 FontSize="{OnPlatform WinUI=Small, Android=Large}"
-                            />
+                                />
 
                             <Label
                                 x:Name="LabelAutoCoralL4"
                                 Text="0"
                                 FontAttributes="Bold"
-                                HorizontalTextAlignment="End"
+                                HorizontalTextAlignment="Center"
                                 WidthRequest="70"
-                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                                FontSize="{OnPlatform WinUI=Large, Android=Large}"
                                 />
 
                             <Button
@@ -247,13 +257,13 @@
 
                         </HorizontalStackLayout>
 
-                        
                         <HorizontalStackLayout
                             HorizontalOptions="Start"
                             >
 
                             <Label
                                 Text="Processor:"
+                                VerticalTextAlignment="Center"
                                 WidthRequest="{OnPlatform WinUI=150, Android=160}"
                                 FontSize="{OnPlatform WinUI=Small, Android=Large}"
                                 />
@@ -270,14 +280,51 @@
                                 x:Name="LabelAutoProcessor"
                                 Text="0"
                                 FontAttributes="Bold"
-                                HorizontalTextAlignment="End"
+                                HorizontalTextAlignment="Center"
                                 WidthRequest="70"
-                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                                FontSize="{OnPlatform WinUI=Large, Android=Large}"
                                 />
 
                             <Button
                                 x:Name="ButtonAutoProcessorPlus"
                                 Clicked="ButtonAutoProcessorPlus_Clicked"
+                                Text=" + "
+                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                                />
+
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout
+                            HorizontalOptions="Start"
+                            >
+
+                            <Label
+                                Text="Barge:"
+                                VerticalTextAlignment="Center"
+                                WidthRequest="{OnPlatform WinUI=150, Android=160}"
+                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                                />
+
+                            <Button
+                                x:Name="ButtonAutoBargeMinus" TextColor="#00a840"
+                                Clicked="ButtonAutoBargeMinus_Clicked"
+                                BackgroundColor="LightSteelBlue"
+                                Text=" - "
+                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                                />
+
+                            <Label
+                                x:Name="LabelAutoBarge"
+                                Text="0"
+                                FontAttributes="Bold"
+                                HorizontalTextAlignment="Center"
+                                WidthRequest="70"
+                                FontSize="{OnPlatform WinUI=Large, Android=Large}"
+                                />
+
+                            <Button
+                                x:Name="ButtonAutoBargePlus"
+                                Clicked="ButtonAutoBargePlus_Clicked"
                                 Text=" + "
                                 FontSize="{OnPlatform WinUI=Small, Android=Large}"
                                 />
@@ -307,6 +354,7 @@
 
                             <Label
                                 Text="Coral Level 1:"
+                                VerticalTextAlignment="Center"
                                 WidthRequest="{OnPlatform WinUI=150, Android=160}"
                                 FontSize="{OnPlatform WinUI=Small, Android=Large}"
                                 />
@@ -323,9 +371,9 @@
                                 x:Name="LabelTeleCoralL1"
                                 Text="0"
                                 FontAttributes="Bold"
-                                HorizontalTextAlignment="End"
+                                HorizontalTextAlignment="Center"
                                 WidthRequest="70"
-                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                                FontSize="{OnPlatform WinUI=Large, Android=Large}"
                                 />
 
                             <Button
@@ -342,7 +390,119 @@
                             >
 
                             <Label
+                                Text="Coral Level 2:"
+                                VerticalTextAlignment="Center"
+                                WidthRequest="{OnPlatform WinUI=150, Android=160}"
+                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                                />
+
+                            <Button
+                                x:Name="ButtonTeleCoralL2Minus" TextColor="Black"
+                                Clicked="ButtonTeleCoralL2Minus_Clicked"
+                                BackgroundColor="LightSteelBlue"
+                                Text=" - "
+                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                                />
+
+                            <Label
+                                x:Name="LabelTeleCoralL2"
+                                Text="0"
+                                FontAttributes="Bold"
+                                HorizontalTextAlignment="Center"
+                                WidthRequest="70"
+                                FontSize="{OnPlatform WinUI=Large, Android=Large}"
+                                />
+
+                            <Button
+                                x:Name="ButtonTeleCoralL2Plus"
+                                Clicked="ButtonTeleCoralL2Plus_Clicked"
+                                Text=" + "
+                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                                />
+
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout
+                            HorizontalOptions="Start"
+                            >
+
+                            <Label
+                                Text="Coral Level 3:"
+                                VerticalTextAlignment="Center"
+                                WidthRequest="{OnPlatform WinUI=150, Android=160}"
+                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                                />
+
+                            <Button
+                                x:Name="ButtonTeleCoralL3Minus" TextColor="Black"
+                                Clicked="ButtonTeleCoralL3Minus_Clicked"
+                                BackgroundColor="LightSteelBlue"
+                                Text=" - "
+                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                                />
+
+                            <Label
+                                x:Name="LabelTeleCoralL3"
+                                Text="0"
+                                FontAttributes="Bold"
+                                HorizontalTextAlignment="Center"
+                                WidthRequest="70"
+                                FontSize="{OnPlatform WinUI=Large, Android=Large}"
+                                />
+
+                            <Button
+                                x:Name="ButtonTeleCoralL3Plus"
+                                Clicked="ButtonTeleCoralL3Plus_Clicked"
+                                Text=" + "
+                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                                />
+
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout
+                            HorizontalOptions="Start"
+                            >
+
+                            <Label
+                                Text="Coral Level 4:"
+                                VerticalTextAlignment="Center"
+                                WidthRequest="{OnPlatform WinUI=150, Android=160}"
+                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                                />
+
+                            <Button
+                                x:Name="ButtonTeleCoralL4Minus" TextColor="Black"
+                                Clicked="ButtonTeleCoralL4Minus_Clicked"
+                                BackgroundColor="LightSteelBlue"
+                                Text=" - "
+                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                                />
+
+                            <Label
+                                x:Name="LabelTeleCoralL4"
+                                Text="0"
+                                FontAttributes="Bold"
+                                HorizontalTextAlignment="Center"
+                                WidthRequest="70"
+                                FontSize="{OnPlatform WinUI=Large, Android=Large}"
+                                />
+
+                            <Button
+                                x:Name="ButtonTeleCoralL4Plus"
+                                Clicked="ButtonTeleCoralL4Plus_Clicked"
+                                Text=" + "
+                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                                />
+
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout
+                            HorizontalOptions="Start"
+                            >
+
+                            <Label
                                 Text="Processor:"
+                                VerticalTextAlignment="Center"
                                 WidthRequest="{OnPlatform WinUI=150, Android=160}"
                                 FontSize="{OnPlatform WinUI=Small, Android=Large}"
                                 />
@@ -359,14 +519,51 @@
                                 x:Name="LabelTeleProcessor"
                                 Text="0"
                                 FontAttributes="Bold"
-                                HorizontalTextAlignment="End"
+                                HorizontalTextAlignment="Center"
                                 WidthRequest="70"
-                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                                FontSize="{OnPlatform WinUI=Large, Android=Large}"
                                 />
 
                             <Button
                                 x:Name="ButtonTeleProcessorPlus"
                                 Clicked="ButtonTeleProcessorPlus_Clicked"
+                                Text=" + "
+                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                                />
+
+                        </HorizontalStackLayout>
+
+                        <HorizontalStackLayout
+                            HorizontalOptions="Start"
+                            >
+
+                            <Label
+                                Text="Barge:"
+                                VerticalTextAlignment="Center"
+                                WidthRequest="{OnPlatform WinUI=150, Android=160}"
+                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                                />
+
+                            <Button
+                                x:Name="ButtonTeleBargeMinus" TextColor="#00a840"
+                                Clicked="ButtonTeleBargeMinus_Clicked"
+                                BackgroundColor="LightSteelBlue"
+                                Text=" - "
+                                FontSize="{OnPlatform WinUI=Small, Android=Large}"
+                                />
+
+                            <Label
+                                x:Name="LabelTeleBarge"
+                                Text="0"
+                                FontAttributes="Bold"
+                                HorizontalTextAlignment="Center"
+                                WidthRequest="70"
+                                FontSize="{OnPlatform WinUI=Large, Android=Large}"
+                                />
+
+                            <Button
+                                x:Name="ButtonTeleBargePlus"
+                                Clicked="ButtonTeleBargePlus_Clicked"
                                 Text=" + "
                                 FontSize="{OnPlatform WinUI=Small, Android=Large}"
                                 />
@@ -398,7 +595,7 @@
                             x:Name="ButtonEndgameParked"
                             Clicked="ButtonEndgameParked_Clicked"
                             BackgroundColor="Grey"
-                            WidthRequest="100"
+                            WidthRequest="150"
                             Padding="0,0,0,0"
                             Text="Parked"
                             FontSize="{OnPlatform WinUI=Small, Android=Large}"
@@ -408,9 +605,9 @@
                             x:Name="ButtonEndgameShallowCage"
                             Clicked="ButtonEndgameShallowCage_Clicked"
                             BackgroundColor="Grey"
-                            WidthRequest="100"
+                            WidthRequest="150"
                             Padding="0,0,0,0"
-                            Text="Parked"
+                            Text="Shallow Cage"
                             FontSize="{OnPlatform WinUI=Small, Android=Large}"
                             />
 
@@ -418,9 +615,9 @@
                             x:Name="ButtonEndgameDeepCage"
                             Clicked="ButtonEndgameDeepCage_Clicked"
                             BackgroundColor="Grey"
-                            WidthRequest="100"
+                            WidthRequest="150"
                             Padding="0,0,0,0"
-                            Text="Parked"
+                            Text="Deep Cage"
                             FontSize="{OnPlatform WinUI=Small, Android=Large}"
                             />
 
@@ -448,8 +645,6 @@
                             Margin="10,0,0,5"
                             FontSize="{OnPlatform WinUI=Small, Android=Large}"
                             />
-
-
 
                     </HorizontalStackLayout>
 

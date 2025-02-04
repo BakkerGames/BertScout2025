@@ -40,7 +40,7 @@ public partial class ListPage
         int match = int.Parse(matchSub);
         int team = int.Parse(teamSub);
 
-        Globals.item = await db.GetTeamMatchAsync(team, match);
+        Globals.item = await db.GetTeamMatchAsync(match, team);
         Globals.viewFormBody = true;
 
         await Shell.Current.GoToAsync("//MainPage");

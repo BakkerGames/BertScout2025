@@ -13,18 +13,13 @@ namespace BertScout2025
         {
             InitializeComponent();
             CommentPicker.Items.Clear();
-            //ScorePicker.Items.Clear();
 
             foreach (string s in CommentList)
             {
                 CommentPicker.Items.Add(s);
             }
-
-            //foreach (string s in ScoringList)
-            //{
-            //    ScorePicker.Items.Add(s);
-            //}
         }
+
         private void MainPage_Loaded(object sender, EventArgs e)
         {
             if (Globals.viewFormBody)
@@ -47,28 +42,29 @@ namespace BertScout2025
             // disable the top row while entering
             EnableTopRow(false);
         }
+
         //IEnumerable<ConnectionProfile> profiles = Connectivity.Current.ConnectionProfiles;
         private async void Start_Clicked(object sender, EventArgs e)
         {
             if (Start.Text == "Start")
             {
                 // check that all fields are valid
-                if (!ValidateTeamNumber(TeamNumber.Text)) return;
                 if (!ValidateMatchNumber(MatchNumber.Text)) return;
+                if (!ValidateTeamNumber(TeamNumber.Text)) return;
 
                 // get integer values for later use
-                var team = int.Parse(TeamNumber.Text);
                 var match = int.Parse(MatchNumber.Text);
+                var team = int.Parse(TeamNumber.Text);
 
                 // get existing record
-                item = await db.GetTeamMatchAsync(team, match);
+                item = await db.GetTeamMatchAsync(match, team);
 
                 // check they entered a scout name
                 if (item == null && !ValidateScoutName(ScoutName.Text)) return;
 
                 // update screen fields without leading zeros
-                TeamNumber.Text = team.ToString();
                 MatchNumber.Text = match.ToString();
+                TeamNumber.Text = team.ToString();
 
                 // delete the match
                 if (ScoutName.Text == "DELETE")
@@ -76,10 +72,10 @@ namespace BertScout2025
                     bool answer = await DisplayAlert("Confirm", "Are you sure you want to delete this match?", "OK", "Cancel");
                     if (answer)
                     {
-                        await db.DeleteTeamMatchAsync(team, match);
+                        await db.DeleteTeamMatchAsync(match, team);
                     }
-                    TeamNumber.Text = "";
                     MatchNumber.Text = "";
+                    TeamNumber.Text = "";
                     ScoutName.Text = "";
                     // re-enable top row and focus on team number
                     EnableTopRow(true);
@@ -90,8 +86,8 @@ namespace BertScout2025
                 // if not found, create new record
                 item ??= new()
                 {
-                    TeamNumber = team,
                     MatchNumber = match,
+                    TeamNumber = team,
                     ScoutName = ScoutName.Text,
                     Comments = "",
                 };
@@ -114,20 +110,16 @@ namespace BertScout2025
                 */
 
                 // prepare for next match
-                TeamNumber.Text = "";
                 var match = int.Parse(MatchNumber.Text);
                 var newMatch = Math.Min(match + 1, 999);
                 MatchNumber.Text = newMatch.ToString();
+                TeamNumber.Text = "";
                 ClearAllFields();
                 // re-enable top row and focus on team number
                 EnableTopRow(true);
                 TeamNumber.Focus();
-
-
             }
         }
-
-
 
         private void SaveFields()
         {
@@ -140,20 +132,14 @@ namespace BertScout2025
             taskSave.Wait();
         }
 
-        private void CommentPicker_SelectedIndexChanged(object sender, EventArgs e)
+        // Autonomous
+
+        private void ButtonAutoLeave_Clicked(object sender, EventArgs e)
         {
-            if (CommentPicker.SelectedIndex < 0)
-                return;
-            if (Comments.Text == null)
-                Comments.Text = "";
-            else if (Comments.Text.Length > 0 && !Comments.Text.EndsWith(' '))
-                Comments.Text += " ";
-            Comments.Text += CommentPicker.SelectedItem.ToString() + " ";
-            CommentPicker.SelectedIndex = -1;
+            item.Auto_Leave = !item.Auto_Leave;
+            ButtonAutoLeave.BackgroundColor = (item.Auto_Leave ? Colors.Green : Colors.Gray);
             SaveFields();
         }
-
-        // Autonomous
 
         private void ButtonAutoCoralL1Minus_Clicked(object sender, EventArgs e)
         {
@@ -227,19 +213,6 @@ namespace BertScout2025
             SaveFields();
         }
 
-        //private void ScorePicker_Picked(object sender, EventArgs e)
-        //{
-        //    if (ScorePicker.SelectedIndex < 0)
-        //        return;
-        //    if (Comments.Text == null)
-        //        Comments.Text = "";
-        //    else if (Comments.Text.Length > 0 && !Comments.Text.EndsWith(' '))
-        //        Comments.Text += " ";
-        //    Comments.Text += ScorePicker.SelectedItem.ToString() + ". ";
-        //    //item.ScoutScore += int.Parse(ScorePicker.SelectedItem?.ToString() ?? "0");
-        //    ScorePicker.SelectedIndex = -1;
-        //    SaveFields();
-        //}
         private void ButtonAutoProcessorMinus_Clicked(object sender, EventArgs e)
         {
             if
@@ -257,10 +230,20 @@ namespace BertScout2025
             SaveFields();
         }
 
-        private void ButtonAutoLeave_Clicked(object sender, EventArgs e)
+        private void ButtonAutoBargeMinus_Clicked(object sender, EventArgs e)
         {
-            item.Auto_Leave = !item.Auto_Leave;
-            ButtonAutoLeave.BackgroundColor = (item.Auto_Leave ? Colors.Green : Colors.Gray);
+            if
+                (item.Auto_Barge > 0)
+            {
+                item.Auto_Barge--;
+                LabelAutoBarge.Text = item.Auto_Barge.ToString();
+                SaveFields();
+            }
+        }
+        private void ButtonAutoBargePlus_Clicked(object sender, EventArgs e)
+        {
+            item.Auto_Barge++;
+            LabelAutoBarge.Text = item.Auto_Barge.ToString();
             SaveFields();
         }
 
@@ -283,6 +266,57 @@ namespace BertScout2025
             SaveFields();
         }
 
+        private void ButtonTeleCoralL2Minus_Clicked(object sender, EventArgs e)
+        {
+            if
+                (item.Tele_Coral_L2 > 0)
+            {
+                item.Tele_Coral_L2--;
+                LabelTeleCoralL2.Text = item.Tele_Coral_L2.ToString();
+                SaveFields();
+            }
+        }
+        private void ButtonTeleCoralL2Plus_Clicked(object sender, EventArgs e)
+        {
+            item.Tele_Coral_L2++;
+            LabelTeleCoralL2.Text = item.Tele_Coral_L2.ToString();
+            SaveFields();
+        }
+
+        private void ButtonTeleCoralL3Minus_Clicked(object sender, EventArgs e)
+        {
+            if
+                (item.Tele_Coral_L3 > 0)
+            {
+                item.Tele_Coral_L3--;
+                LabelTeleCoralL3.Text = item.Tele_Coral_L3.ToString();
+                SaveFields();
+            }
+        }
+        private void ButtonTeleCoralL3Plus_Clicked(object sender, EventArgs e)
+        {
+            item.Tele_Coral_L3++;
+            LabelTeleCoralL3.Text = item.Tele_Coral_L3.ToString();
+            SaveFields();
+        }
+
+        private void ButtonTeleCoralL4Minus_Clicked(object sender, EventArgs e)
+        {
+            if
+                (item.Tele_Coral_L4 > 0)
+            {
+                item.Tele_Coral_L4--;
+                LabelTeleCoralL4.Text = item.Tele_Coral_L4.ToString();
+                SaveFields();
+            }
+        }
+        private void ButtonTeleCoralL4Plus_Clicked(object sender, EventArgs e)
+        {
+            item.Tele_Coral_L4++;
+            LabelTeleCoralL4.Text = item.Tele_Coral_L4.ToString();
+            SaveFields();
+        }
+
         private void ButtonTeleProcessorMinus_Clicked(object sender, EventArgs e)
         {
             if
@@ -300,6 +334,23 @@ namespace BertScout2025
             SaveFields();
         }
 
+        private void ButtonTeleBargeMinus_Clicked(object sender, EventArgs e)
+        {
+            if
+                (item.Tele_Barge > 0)
+            {
+                item.Tele_Barge--;
+                LabelTeleBarge.Text = item.Tele_Barge.ToString();
+                SaveFields();
+            }
+        }
+        private void ButtonTeleBargePlus_Clicked(object sender, EventArgs e)
+        {
+            item.Tele_Barge++;
+            LabelTeleBarge.Text = item.Tele_Barge.ToString();
+            SaveFields();
+        }
+
         // Endgame
 
         private void ButtonEndgameParked_Clicked(object sender, EventArgs e)
@@ -307,59 +358,46 @@ namespace BertScout2025
             SetButton_Parked(!item.Endgame_Parked);
             if (item.Endgame_Parked)
             {
-                //SetButton_OnStage(false);
-                //SetButton_Harmony(false);
-                //SetButton_Spotlit(false);
+                SetButton_ShallowCage(false);
+                SetButton_DeepCage(false);
             }
             SaveFields();
         }
 
         private void ButtonEndgameShallowCage_Clicked(object sender, EventArgs e)
         {
-            SetButton_OnStage(!item.Endgame_Shallow_Cage);
+            SetButton_ShallowCage(!item.Endgame_Shallow_Cage);
             if (item.Endgame_Shallow_Cage)
             {
                 SetButton_Parked(false);
+                SetButton_DeepCage(false);
             }
             SaveFields();
         }
 
         private void ButtonEndgameDeepCage_Clicked(object sender, EventArgs e)
         {
-            //item.Endgame_Trap = !item.Endgame_Trap;
-            //switch (item.Endgame_Trap)
-            //{
-            //    case false:
-            //        ButtonEndgameTrap.BackgroundColor = Colors.Gray;
-            //        break;
-            //    case true:
-            //        ButtonEndgameTrap.BackgroundColor = Colors.Green;
-            //        break;
-            //}
-            //SaveFields();
-        }
-
-        private void ButtonEndgameHarmony_Clicked(object sender, EventArgs e)
-        {
-            SetButton_Harmony(!item.Endgame_Deep_Cage);
+            SetButton_DeepCage(!item.Endgame_Deep_Cage);
             if (item.Endgame_Deep_Cage)
             {
-                SetButton_OnStage(true);
                 SetButton_Parked(false);
+                SetButton_ShallowCage(false);
             }
             SaveFields();
         }
 
-        //private void ButtonEndgameSpotlit_Clicked(object sender, EventArgs e)
-        //{
-        //    SetButton_Spotlit(!item.Endgame_Spotlit);
-        //    if (item.Endgame_Spotlit)
-        //    {
-        //        SetButton_OnStage(true);
-        //        SetButton_Parked(false);
-        //    }
-        //    SaveFields();
-        //}
+        private void CommentPicker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (CommentPicker.SelectedIndex < 0)
+                return;
+            if (Comments.Text == null)
+                Comments.Text = "";
+            else if (Comments.Text.Length > 0 && !Comments.Text.EndsWith(' '))
+                Comments.Text += " ";
+            Comments.Text += CommentPicker.SelectedItem.ToString() + " ";
+            CommentPicker.SelectedIndex = -1;
+            SaveFields();
+        }
 
         private void Comments_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -374,28 +412,16 @@ namespace BertScout2025
             ButtonEndgameParked.BackgroundColor = (value ? Colors.Green : Colors.Gray);
         }
 
-        private void SetButton_OnStage(bool value)
+        private void SetButton_ShallowCage(bool value)
         {
-            //item.Endgame_Shallow_Cage = value;
-            //ButtonEndgameOnStage.BackgroundColor = (value ? Colors.Green : Colors.Gray);
+            item.Endgame_Shallow_Cage = value;
+            ButtonEndgameShallowCage.BackgroundColor = (value ? Colors.Green : Colors.Gray);
         }
 
-        private void SetButton_Harmony(bool value)
+        private void SetButton_DeepCage(bool value)
         {
-            //item.Endgame_Deep_Cage = value;
-            //ButtonEndgameHarmony.BackgroundColor = (value ? Colors.Green : Colors.Gray);
-        }
-
-        private void SetButton_Spotlit(bool value)
-        {
-            //item.Endgame_Spotlit = value;
-            //ButtonEndgameSpotlit.BackgroundColor = (value ? Colors.Green : Colors.Gray);
-        }
-
-        private void SetButton_Trap(bool value)
-        {
-            //item.Endgame_Trap = value;
-            //ButtonEndgameTrap.BackgroundColor = (value ? Colors.Green : Colors.Gray);
+            item.Endgame_Deep_Cage = value;
+            ButtonEndgameDeepCage.BackgroundColor = (value ? Colors.Green : Colors.Gray);
         }
 
         #endregion

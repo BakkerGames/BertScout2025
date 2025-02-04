@@ -27,7 +27,7 @@
 		<ApplicationId>com.companyname.bertscout2025</ApplicationId>
 
 		<!-- Versions -->
-		<ApplicationDisplayVersion>0.0.1</ApplicationDisplayVersion>
+		<ApplicationDisplayVersion>2025.2.3</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
 
 		<!-- <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">11.0</SupportedOSPlatformVersion> -->
@@ -36,9 +36,11 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 		<!-- <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion> -->
-		<Version>0.0.1</Version>
+		<Version>2025.2.3.0</Version>
 		<DefaultLanguage>en</DefaultLanguage>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<FileVersion>2025.2.3.0</FileVersion>
+		<AssemblyVersion>2025.2.3.0</AssemblyVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-android|AnyCPU'">

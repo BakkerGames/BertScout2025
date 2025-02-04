@@ -6,25 +6,12 @@ public partial class MainPage
 {
     public void EnableTopRow(bool enable)
     {
-        TeamNumber.IsEnabled = enable;
         MatchNumber.IsEnabled = enable;
+        TeamNumber.IsEnabled = enable;
         FormBody.IsVisible = !enable;
         Start.Text = enable ? "Start" : "Save";
-        TeamNumber.TextColor = enable ? Colors.White : Colors.Gray;
         MatchNumber.TextColor = enable ? Colors.White : Colors.Gray;
-    }
-
-    public static bool ValidateTeamNumber(string teamNumber)
-    {
-        if (!int.TryParse(teamNumber, out int tNumber))
-        {
-            return false;
-        }
-        if (tNumber < 1)
-        {
-            return false;
-        }
-        return true;
+        TeamNumber.TextColor = enable ? Colors.White : Colors.Gray;
     }
 
     public static bool ValidateMatchNumber(string matchNumber)
@@ -34,6 +21,19 @@ public partial class MainPage
             return false;
         }
         if (mNumber < 1)
+        {
+            return false;
+        }
+        return true;
+    }
+
+    public static bool ValidateTeamNumber(string teamNumber)
+    {
+        if (!int.TryParse(teamNumber, out int tNumber))
+        {
+            return false;
+        }
+        if (tNumber < 1)
         {
             return false;
         }
@@ -64,20 +64,24 @@ public partial class MainPage
 
     private void FillFields(TeamMatch item)
     {
-        LabelAutoCoralL1.Text = item.Auto_Coral_L1.ToString();
-        LabelAutoProcessor.Text = item.Auto_Processor.ToString();
-
         ButtonAutoLeave.BackgroundColor = item.Auto_Leave ? Colors.Green : Colors.Gray;
+        LabelAutoCoralL1.Text = item.Auto_Coral_L1.ToString();
+        LabelAutoCoralL2.Text = item.Auto_Coral_L2.ToString();
+        LabelAutoCoralL3.Text = item.Auto_Coral_L3.ToString();
+        LabelAutoCoralL4.Text = item.Auto_Coral_L4.ToString();
+        LabelAutoProcessor.Text = item.Auto_Processor.ToString();
+        LabelAutoBarge.Text = item.Auto_Barge.ToString();
 
         LabelTeleCoralL1.Text = item.Tele_Coral_L1.ToString();
+        LabelTeleCoralL2.Text = item.Tele_Coral_L2.ToString();
+        LabelTeleCoralL3.Text = item.Tele_Coral_L3.ToString();
+        LabelTeleCoralL4.Text = item.Tele_Coral_L4.ToString();
         LabelTeleProcessor.Text = item.Tele_Processor.ToString();
-        LabelTeleProcessor.Text = item.Tele_Barge.ToString();
+        LabelTeleBarge.Text = item.Tele_Barge.ToString();
 
         ButtonEndgameParked.BackgroundColor = item.Endgame_Parked ? Colors.Green : Colors.Gray;
-        //ButtonEndgameOnStage.BackgroundColor = item.Endgame_Shallow_Cage ? Colors.Green : Colors.Gray;
-        //ButtonEndgameSpotlit.BackgroundColor = item.Endgame_Spotlit ? Colors.Green : Colors.Gray;
-        //ButtonEndgameHarmony.BackgroundColor = item.Endgame_Deep_Cage ? Colors.Green : Colors.Gray;
-        //ButtonEndgameTrap.BackgroundColor = item.Endgame_Trap ? Colors.Green : Colors.Gray;
+        ButtonEndgameShallowCage.BackgroundColor = item.Endgame_Shallow_Cage ? Colors.Green : Colors.Gray;
+        ButtonEndgameDeepCage.BackgroundColor = item.Endgame_Deep_Cage ? Colors.Green : Colors.Gray;
 
         Comments.Text = item.Comments;
         CommentPicker.SelectedIndex = -1;
