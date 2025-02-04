@@ -6,8 +6,8 @@ namespace BertScout2025.Databases;
 
 public class AirtableService
 {
-    private const string AIRTABLE_BASE = "appnXdbeXxrMQcxWD";
-    private const string AIRTABLE_TABLE = "tblwEZxIYqMwwKKra";
+    private const string AIRTABLE_BASE = "app37rfVnkSIZNl4m";
+    private const string AIRTABLE_TABLE = "tblax92LZb7R9HDIz";
     private const string AIRTABLE_TOKEN =
         "patfzISurpeeid0W1.0b1137a4a0e865dec23cec799d2faf4f7eaef82f5ac767c2ca380ac53200791a";
 
