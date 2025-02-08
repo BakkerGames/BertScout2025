@@ -80,7 +80,7 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\bert_logo_icon.png" />
+		<MauiIcon Include="Resources\AppIcon\bert_logo_icon.svg" Color="#00000000"/>
 
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
@@ -97,7 +97,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="Resources\AppIcon\bert_logo_icon.png" />
+	  <None Remove="Resources\AppIcon\bert_logo_icon.svg" />
 	</ItemGroup>
 
 	<ItemGroup>

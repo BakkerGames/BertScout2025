@@ -401,7 +401,13 @@ namespace BertScout2025
 
         private void Comments_TextChanged(object sender, TextChangedEventArgs e)
         {
-            item.Comments = Comments?.Text ?? "";
+            var temp = Comments?.Text ?? "";
+            if (temp.Length > 250)
+            {
+                temp = temp[0..250];
+                Comments!.Text = temp;
+            }
+            item.Comments = temp;
         }
 
         #region ButtonEvents

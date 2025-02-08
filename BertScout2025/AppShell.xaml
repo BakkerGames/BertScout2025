@@ -1,15 +1,49 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Shell
+    x:DataType="Shell"
     x:Class="BertScout2025.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:BertScout2025"
-    Shell.FlyoutBehavior="Disabled"
-    Title="BertScout2025">
+    Shell.FlyoutBehavior="Flyout"
+    BackgroundColor="#007F00"
+    Shell.TitleColor="White"
+    Title="BertScout2025"
+    >
+    
+    <FlyoutItem Title="Home">
+        <Tab>
+            <ShellContent
+                Title="Bert Scouting 2025"
+                ContentTemplate="{DataTemplate local:MainPage}"
+            />
+        </Tab>
+    </FlyoutItem>
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <FlyoutItem Title="List Matches">
+        <Tab>
+            <ShellContent
+                Title="List Matches"
+                ContentTemplate="{DataTemplate local:ListPage}"
+            />
+        </Tab>
+    </FlyoutItem>
+
+    <FlyoutItem Title="Airtable">
+        <Tab>
+
+            <ShellContent
+                ContentTemplate="{DataTemplate local:AirtablePage}"
+            />
+        </Tab>
+    </FlyoutItem>
+
+    <FlyoutItem Title="About">
+        <Tab>
+            <ShellContent
+                ContentTemplate="{DataTemplate local:AboutPage}"
+            />
+        </Tab>
+    </FlyoutItem>
 
 </Shell>
