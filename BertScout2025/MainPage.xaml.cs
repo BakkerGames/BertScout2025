@@ -1,5 +1,6 @@
 ﻿using BertScout2025.Databases;
 using BertScout2025.Models;
+using System.Text.RegularExpressions;
 
 namespace BertScout2025
 {
@@ -43,15 +44,33 @@ namespace BertScout2025
         //IEnumerable<ConnectionProfile> profiles = Connectivity.Current.ConnectionProfiles;
         private async void Start_Clicked(object sender, EventArgs e)
         {
+            // get integer values for later use
+            if (int.TryParse(MatchNumber.Text, out int match)) { }
+            if (int.TryParse(TeamNumber.Text, out int team)) { }
+
+            // delete the match
+            if (match > 0 && team > 0 && ScoutName.Text.Equals("DELETE", StringComparison.OrdinalIgnoreCase))
+            {
+                bool answer = await DisplayAlert("Confirm", "Are you sure you want to delete this match?", "OK", "Cancel");
+                if (answer)
+                {
+                    await db.DeleteTeamMatchAsync(match, team);
+                }
+                MatchNumber.Text = "";
+                TeamNumber.Text = "";
+                ScoutName.Text = "";
+                // re-enable top row and focus on team number
+                EnableTopRow(true);
+                TeamNumber.Focus();
+                return;
+            }
+
             if (Start.Text == "Start")
             {
                 // check that all fields are valid
                 if (!ValidateMatchNumber(MatchNumber.Text)) return;
                 if (!ValidateTeamNumber(TeamNumber.Text)) return;
-
-                // get integer values for later use
-                var match = int.Parse(MatchNumber.Text);
-                var team = int.Parse(TeamNumber.Text);
+                if (string.IsNullOrWhiteSpace(ScoutName.Text)) return;
 
                 // get existing record
                 item = await db.GetTeamMatchAsync(match, team);
@@ -62,23 +81,6 @@ namespace BertScout2025
                 // update screen fields without leading zeros
                 MatchNumber.Text = match.ToString();
                 TeamNumber.Text = team.ToString();
-
-                // delete the match
-                if (ScoutName.Text == "DELETE")
-                {
-                    bool answer = await DisplayAlert("Confirm", "Are you sure you want to delete this match?", "OK", "Cancel");
-                    if (answer)
-                    {
-                        await db.DeleteTeamMatchAsync(match, team);
-                    }
-                    MatchNumber.Text = "";
-                    TeamNumber.Text = "";
-                    ScoutName.Text = "";
-                    // re-enable top row and focus on team number
-                    EnableTopRow(true);
-                    TeamNumber.Focus();
-                    return;
-                }
 
                 // if not found, create new record
                 item ??= new()
@@ -96,22 +98,12 @@ namespace BertScout2025
                 // store the screen fields in the record
                 SaveFields();
 
-                /*
-                if (profiles.Contains(ConnectionProfile.WiFi) && false)
-                {
-                    AirtablePage aPage = new AirtablePage();
-                    var uselessTask = Task.Run(() => aPage.AirtableSender());
-                    uselessTask.Wait();
-                    var useless = uselessTask.Result;
-                }
-                */
-
                 // prepare for next match
-                var match = int.Parse(MatchNumber.Text);
                 var newMatch = Math.Min(match + 1, 999);
                 MatchNumber.Text = newMatch.ToString();
                 TeamNumber.Text = "";
                 ClearAllFields();
+
                 // re-enable top row and focus on team number
                 EnableTopRow(true);
                 TeamNumber.Focus();
