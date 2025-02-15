@@ -1,0 +1,3 @@
+pat8a52OHTzoEMFQR.eedc431512ca2ec3fde5a08a358bc125e1da8e4eb869939596dfa5772b775027
+
+curl https://api.airtable.com/v0/app37rfVnkSIZNl4m/Matches -H "Authorization: Bearer pat8a52OHTzoEMFQR.eedc431512ca2ec3fde5a08a358bc125e1da8e4eb869939596dfa5772b775027"

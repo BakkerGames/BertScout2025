@@ -43,13 +43,13 @@ public partial class ListPage
         Globals.item = await db.GetTeamMatchAsync(match, team);
         Globals.viewFormBody = true;
 
-        await Shell.Current.GoToAsync("//MainPage");
+        Routing.RegisterRoute("mainpage", typeof(MainPage));
+        await Shell.Current.GoToAsync("mainpage");
     }
 
     private void ShowMatchButton_Clicked(object sender, EventArgs e)
     {
         ShowMatchesAsync();
-       
     }
 }
 

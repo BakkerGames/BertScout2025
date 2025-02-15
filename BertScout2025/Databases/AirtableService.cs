@@ -8,8 +8,7 @@ public class AirtableService
 {
     private const string AIRTABLE_BASE = "app37rfVnkSIZNl4m";
     private const string AIRTABLE_TABLE = "tblax92LZb7R9HDIz";
-    private const string AIRTABLE_TOKEN =
-        "patfzISurpeeid0W1.0b1137a4a0e865dec23cec799d2faf4f7eaef82f5ac767c2ca380ac53200791a";
+    private const string AIRTABLE_TOKEN = "pat8a52OHTzoEMFQR.eedc431512ca2ec3fde5a08a358bc125e1da8e4eb869939596dfa5772b775027";
 
     public static async Task<int> AirtableSendRecords(List<TeamMatch> matches)
     {
@@ -121,7 +120,7 @@ public class AirtableService
                 sendList.Add(newRecordList[0]);
                 newRecordList.RemoveAt(0);
             } while (newRecordList.Count > 0 && sendList.Count < 10);
-            result = await airtableBase.CreateMultipleRecords("TeamMatch", sendList.ToArray());
+            result = await airtableBase.CreateMultipleRecords(AIRTABLE_TABLE, sendList.ToArray());
             if (!result.Success)
             {
                 return -1;
@@ -165,7 +164,7 @@ public class AirtableService
                 sendList.Add(updatedRecordList[0]);
                 updatedRecordList.RemoveAt(0);
             } while (updatedRecordList.Count > 0 && sendList.Count < 10);
-            result = await airtableBase.UpdateMultipleRecords("TeamMatch", sendList.ToArray());
+            result = await airtableBase.UpdateMultipleRecords(AIRTABLE_TABLE, sendList.ToArray());
             if (!result.Success)
             {
                 return -1;

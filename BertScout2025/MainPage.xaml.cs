@@ -7,7 +7,7 @@ namespace BertScout2025
     {
         private readonly LocalDatabase db = new();
 
-        private TeamMatch item = Globals.item;
+        private TeamMatch item = new();
 
         public MainPage()
         {
@@ -18,10 +18,7 @@ namespace BertScout2025
             {
                 CommentPicker.Items.Add(s);
             }
-        }
 
-        private void MainPage_Loaded(object sender, EventArgs e)
-        {
             if (Globals.viewFormBody)
             {
                 TeamNumber.Text = Globals.item.TeamNumber.ToString();
