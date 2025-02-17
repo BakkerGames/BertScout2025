@@ -14,19 +14,24 @@
 
         <Label
             x:Name="LabelAboutVersion"
-            Text="Version: 2025.2.3.0"
+            Text="Version: 2025.2.16.0"
+            FontSize="{OnPlatform WinUI=Small, Android=Medium}"
             HorizontalOptions="Center"
+            Margin="0,20,0,0"
             />
 
         <Label
             x:Name="LabelAboutDatabase"
             Text="DatabasePath"
+            FontSize="{OnPlatform WinUI=Small, Android=Medium}"
             HorizontalOptions="Center"
             />
 
         <Label
-            HorizontalOptions="Center"
+            x:Name="LabelAboutWrittenBy"
             Text="Written by: Evan, Paul, Nate, and Scott"
+            FontSize="{OnPlatform WinUI=Small, Android=Medium}"
+            HorizontalOptions="Center"
             />
 
     </VerticalStackLayout>

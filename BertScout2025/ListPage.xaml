@@ -10,28 +10,18 @@
     >
 
     <ContentPage.BindingContext>
-        <local:MatchItem/>
+        <local:MatchItem />
     </ContentPage.BindingContext>
 
     <ListView x:Name="MatchesListView">
-        <ListView.Header>
-            <Button
-                x:Name="ShowMatchButton"
-                Text="Refresh List"
-                Clicked="ShowMatchButton_Clicked"
-                VerticalOptions="Center" 
-                HorizontalOptions="Center"
-                Margin="0,10,0,0"
-            />
-        </ListView.Header>
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
                     <Button
-                    x:Name="{Binding Match}"
-                    Text="{Binding Match}"
-                    Clicked="OpenMatchButton_Clicked"
-                    Margin="0,10,0,0"
+                        x:Name="{Binding Text}"
+                        Text="{Binding Text}"
+                        Clicked="OpenMatchButton_Clicked"
+                        Margin="0,10,0,0"
                     />
                 </ViewCell>
             </DataTemplate>

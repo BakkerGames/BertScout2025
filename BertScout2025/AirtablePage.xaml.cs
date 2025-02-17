@@ -1,6 +1,5 @@
 using BertScout2025.Databases;
 using BertScout2025.Models;
-using System.Text.RegularExpressions;
 
 namespace BertScout2025;
 
@@ -21,12 +20,11 @@ public partial class AirtablePage
             AirtableUpdatedLabel.Text = "Sending, please wait...";
             AirtableResults.Text = "";
             InvalidateMeasure();
-            //Task task = DisplayAlert("Sending", "Sending data to Airtable - Please Wait","OK");
-           
+
             List<TeamMatch> matches = await db.GetItemsAsync();
             var count = await AirtableService.AirtableSendRecords(matches);
             var showS = (count == 1) ? "" : "s";
-            AirtableUpdatedLabel.Text = $"Sending {count} record{showS} to Airtable";
+            AirtableUpdatedLabel.Text = $"Send {count} record{showS} to Airtable";
             foreach (TeamMatch item in matches
                 .OrderBy(x => $"{x.MatchNumber,3}{x.TeamNumber,5}"))
             {
@@ -49,8 +47,8 @@ public partial class AirtablePage
             AirtableSend.IsEnabled = true;
             Globals.item = new();
             Globals.viewFormBody = false;
-            Routing.RegisterRoute("mainpage", typeof(MainPage));
-            await Shell.Current.GoToAsync("mainpage");
+            //Routing.RegisterRoute("mainpage", typeof(MainPage));
+            //await Shell.Current.GoToAsync("mainpage");
         }
     }
 

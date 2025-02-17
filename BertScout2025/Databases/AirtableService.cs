@@ -127,23 +127,18 @@ public class AirtableService
             }
             foreach (AirtableRecord rec in result.Records)
             {
-                foreach (TeamMatch match in matches)
+                foreach (TeamMatch match in matches
+                    .Where(x => x.Uuid == (rec.GetField("Uuid")?.ToString() ?? "")))
                 {
-                    if (match.Uuid == null) continue;
-                    var uuid = rec.GetField("Uuid");
-                    if (uuid == null) continue;
-                    if (match.Uuid.Equals(uuid.ToString(), StringComparison.OrdinalIgnoreCase))
-                    {
-                        match.AirtableId = rec.Id;
-                        finalCount++;
-                        break;
-                    }
+                    match.AirtableId = rec.Id;
+                    match.Changed = true;
+                    finalCount++;
                 }
             }
             if (newRecordList.Count > 0)
             {
                 // can only send 5 batches per second - make sure that doesn't happen
-                Thread.Sleep(500);
+                Thread.Sleep(250);
             }
         }
         return finalCount;
@@ -176,7 +171,7 @@ public class AirtableService
             if (updatedRecordList.Count > 0)
             {
                 // can only send 5 batches per second, make sure that doesn't happen
-                Thread.Sleep(500);
+                Thread.Sleep(250);
             }
         }
         return finalCount;
