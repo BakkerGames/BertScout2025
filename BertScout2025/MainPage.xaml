@@ -51,7 +51,8 @@
             <Entry
                 x:Name="ScoutName"
                 Placeholder="enter your name"
-                WidthRequest="160"
+                PlaceholderColor="Gray"
+                WidthRequest="170"
                 MaxLength="15"
                 Margin="10,5,0,0"
                 Text=""
