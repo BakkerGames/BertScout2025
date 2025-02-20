@@ -28,7 +28,7 @@
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="$targetentrypoint$">
       <uap:VisualElements
-        DisplayName="SplashScreen"
+        DisplayName="Bert Scout 2025"
         Description="Splash screen"
         Square150x150Logo="$placeholder$.png"
         Square44x44Logo="$placeholder$.png"
