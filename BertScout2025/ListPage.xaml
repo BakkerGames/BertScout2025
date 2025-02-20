@@ -9,11 +9,18 @@
     BackgroundColor="{AppThemeBinding Light=White, Dark=#003300}"
     >
 
-    <ContentPage.BindingContext>
-        <local:MatchItem />
-    </ContentPage.BindingContext>
-
     <ListView x:Name="MatchesListView">
+        <ListView.Header>
+            <Button
+                x:Name="ShowMatchButton"
+                Text="Refresh List"
+                Clicked="ShowMatchButton_Clicked"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"
+                WidthRequest="150"
+                Margin="0,10,0,0"
+            />
+        </ListView.Header>
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>

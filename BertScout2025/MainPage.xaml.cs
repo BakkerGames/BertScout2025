@@ -127,6 +127,7 @@ namespace BertScout2025
         {
             item.Auto_Leave = !item.Auto_Leave;
             ButtonAutoLeave.BackgroundColor = (item.Auto_Leave ? Colors.Green : Colors.Gray);
+            ButtonAutoLeave.Text = ((item.Auto_Leave ? (char)10004 : "") + " Leave").Trim();
             SaveFields();
         }
 

@@ -92,6 +92,15 @@ public class LocalDatabase
             .FirstOrDefaultAsync();
     }
 
+    public async Task<TeamMatch> GetTeamMatchDeletedAsync(int match, int team)
+    {
+        await Init();
+        return await Database.Table<TeamMatch>()
+            .Where(i => i.MatchNumber == match && i.TeamNumber == team)
+            .Where(i => i.Deleted)
+            .FirstOrDefaultAsync();
+    }
+
     public async Task<TeamMatch> GetItemAsync(int id)
     {
         await Init();
@@ -109,6 +118,7 @@ public class LocalDatabase
             return await Database.UpdateAsync(item);
         }
         var oldItem = await GetTeamMatchAsync(item.MatchNumber, item.TeamNumber);
+        oldItem ??= await GetTeamMatchDeletedAsync(item.MatchNumber, item.TeamNumber);
         if (oldItem != null)
         {
             item.Id = oldItem.Id;

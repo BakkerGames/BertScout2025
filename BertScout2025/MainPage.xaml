@@ -104,6 +104,7 @@
                                 Clicked="ButtonAutoLeave_Clicked"
                                 BackgroundColor="Grey"
                                 WidthRequest="140"
+                                FontAttributes="Bold"
                                 Text="Leave"
                                 Margin="0,0,0,5"
                                 FontSize="{OnPlatform WinUI=Small, Android=Medium}"
@@ -142,6 +143,8 @@
                             <Button
                                 x:Name="ButtonAutoCoralL4Plus"
                                 Clicked="ButtonAutoCoralL4Plus_Clicked"
+                                WidthRequest="75"
+                                FontAttributes="Bold"
                                 Text=" + "
                                 FontSize="{OnPlatform WinUI=Small, Android=Medium}"
                                 />
@@ -179,6 +182,8 @@
                             <Button
                                 x:Name="ButtonAutoCoralL3Plus"
                                 Clicked="ButtonAutoCoralL3Plus_Clicked"
+                                WidthRequest="75"
+                                FontAttributes="Bold"
                                 Text=" + "
                                 FontSize="{OnPlatform WinUI=Small, Android=Medium}"
                                 />
@@ -216,6 +221,8 @@
                             <Button
                                 x:Name="ButtonAutoCoralL2Plus"
                                 Clicked="ButtonAutoCoralL2Plus_Clicked"
+                                WidthRequest="75"
+                                FontAttributes="Bold"
                                 Text=" + "
                                 FontSize="{OnPlatform WinUI=Small, Android=Medium}"
                                 />
@@ -253,6 +260,8 @@
                             <Button
                                 x:Name="ButtonAutoCoralL1Plus"
                                 Clicked="ButtonAutoCoralL1Plus_Clicked"
+                                WidthRequest="75"
+                                FontAttributes="Bold"
                                 Text=" + "
                                 FontSize="{OnPlatform WinUI=Small, Android=Medium}"
                                 />
@@ -290,6 +299,8 @@
                             <Button
                                 x:Name="ButtonAutoProcessorPlus"
                                 Clicked="ButtonAutoProcessorPlus_Clicked"
+                                WidthRequest="75"
+                                FontAttributes="Bold"
                                 Text=" + "
                                 FontSize="{OnPlatform WinUI=Small, Android=Medium}"
                                 />
@@ -327,6 +338,8 @@
                             <Button
                                 x:Name="ButtonAutoBargePlus"
                                 Clicked="ButtonAutoBargePlus_Clicked"
+                                WidthRequest="75"
+                                FontAttributes="Bold"
                                 Text=" + "
                                 FontSize="{OnPlatform WinUI=Small, Android=Medium}"
                                 />
@@ -383,6 +396,8 @@
                             <Button
                                 x:Name="ButtonTeleCoralL4Plus"
                                 Clicked="ButtonTeleCoralL4Plus_Clicked"
+                                WidthRequest="75"
+                                FontAttributes="Bold"
                                 Text=" + "
                                 FontSize="{OnPlatform WinUI=Small, Android=Medium}"
                                 />
@@ -420,6 +435,8 @@
                             <Button
                                 x:Name="ButtonTeleCoralL3Plus"
                                 Clicked="ButtonTeleCoralL3Plus_Clicked"
+                                WidthRequest="75"
+                                FontAttributes="Bold"
                                 Text=" + "
                                 FontSize="{OnPlatform WinUI=Small, Android=Medium}"
                                 />
@@ -457,6 +474,8 @@
                             <Button
                                 x:Name="ButtonTeleCoralL2Plus"
                                 Clicked="ButtonTeleCoralL2Plus_Clicked"
+                                WidthRequest="75"
+                                FontAttributes="Bold"
                                 Text=" + "
                                 FontSize="{OnPlatform WinUI=Small, Android=Medium}"
                                 />
@@ -494,6 +513,8 @@
                             <Button
                                 x:Name="ButtonTeleCoralL1Plus"
                                 Clicked="ButtonTeleCoralL1Plus_Clicked"
+                                WidthRequest="75"
+                                FontAttributes="Bold"
                                 Text=" + "
                                 FontSize="{OnPlatform WinUI=Small, Android=Medium}"
                                 />
@@ -531,6 +552,8 @@
                             <Button
                                 x:Name="ButtonTeleProcessorPlus"
                                 Clicked="ButtonTeleProcessorPlus_Clicked"
+                                WidthRequest="75"
+                                FontAttributes="Bold"
                                 Text=" + "
                                 FontSize="{OnPlatform WinUI=Small, Android=Medium}"
                                 />
@@ -568,6 +591,8 @@
                             <Button
                                 x:Name="ButtonTeleBargePlus"
                                 Clicked="ButtonTeleBargePlus_Clicked"
+                                WidthRequest="75"
+                                FontAttributes="Bold"
                                 Text=" + "
                                 FontSize="{OnPlatform WinUI=Small, Android=Medium}"
                                 />
