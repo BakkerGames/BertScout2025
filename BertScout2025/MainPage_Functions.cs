@@ -64,7 +64,8 @@ public partial class MainPage
 
     private void FillFields(TeamMatch item)
     {
-        ButtonAutoLeave.BackgroundColor = item.Auto_Leave ? Colors.Green : Colors.Gray;
+        SetButton_Leave(item.Auto_Leave);
+
         LabelAutoCoralL1.Text = item.Auto_Coral_L1.ToString();
         LabelAutoCoralL2.Text = item.Auto_Coral_L2.ToString();
         LabelAutoCoralL3.Text = item.Auto_Coral_L3.ToString();
@@ -79,9 +80,9 @@ public partial class MainPage
         LabelTeleProcessor.Text = item.Tele_Processor.ToString();
         LabelTeleBarge.Text = item.Tele_Barge.ToString();
 
-        ButtonEndgameParked.BackgroundColor = item.Endgame_Parked ? Colors.Green : Colors.Gray;
-        ButtonEndgameShallowCage.BackgroundColor = item.Endgame_Shallow_Cage ? Colors.Green : Colors.Gray;
-        ButtonEndgameDeepCage.BackgroundColor = item.Endgame_Deep_Cage ? Colors.Green : Colors.Gray;
+        SetButton_Parked(item.Endgame_Parked);
+        SetButton_ShallowCage(item.Endgame_Shallow_Cage);
+        SetButton_DeepCage(item.Endgame_Deep_Cage);
 
         Comments.Text = item.Comments;
         CommentPicker.SelectedIndex = -1;

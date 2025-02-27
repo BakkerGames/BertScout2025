@@ -1,12 +1,13 @@
 ﻿using BertScout2025.Databases;
 using BertScout2025.Models;
-using System.Text.RegularExpressions;
 
 namespace BertScout2025
 {
     public partial class MainPage : ContentPage
     {
         private readonly LocalDatabase db = new();
+
+        private readonly string Checkmark = $"{(char)10004} ";
 
         private TeamMatch item = new();
 
@@ -125,9 +126,7 @@ namespace BertScout2025
 
         private void ButtonAutoLeave_Clicked(object sender, EventArgs e)
         {
-            item.Auto_Leave = !item.Auto_Leave;
-            ButtonAutoLeave.BackgroundColor = (item.Auto_Leave ? Colors.Green : Colors.Gray);
-            ButtonAutoLeave.Text = ((item.Auto_Leave ? (char)10004 : "") + " Leave").Trim();
+            SetButton_Leave(!item.Auto_Leave);
             SaveFields();
         }
 
@@ -402,22 +401,32 @@ namespace BertScout2025
 
         #region ButtonEvents
 
+        private void SetButton_Leave(bool value)
+        {
+            item.Auto_Leave = value;
+            ButtonAutoLeave.BackgroundColor = (item.Auto_Leave ? Colors.Green : Colors.Gray);
+            ButtonAutoLeave.Text = (item.Auto_Leave ? Checkmark : "") + "Leave";
+        }
+
         private void SetButton_Parked(bool value)
         {
             item.Endgame_Parked = value;
             ButtonEndgameParked.BackgroundColor = (value ? Colors.Green : Colors.Gray);
+            ButtonEndgameParked.Text = (item.Endgame_Parked ? Checkmark : "") + "Parked";
         }
 
         private void SetButton_ShallowCage(bool value)
         {
             item.Endgame_Shallow_Cage = value;
             ButtonEndgameShallowCage.BackgroundColor = (value ? Colors.Green : Colors.Gray);
+            ButtonEndgameShallowCage.Text = (item.Endgame_Shallow_Cage ? Checkmark : "") + "High (Shallow) Cage";
         }
 
         private void SetButton_DeepCage(bool value)
         {
             item.Endgame_Deep_Cage = value;
             ButtonEndgameDeepCage.BackgroundColor = (value ? Colors.Green : Colors.Gray);
+            ButtonEndgameDeepCage.Text = (item.Endgame_Deep_Cage ? Checkmark : "") + "Low (Deep) Cage";
         }
 
         #endregion
