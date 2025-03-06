@@ -96,6 +96,17 @@ namespace BertScout2025
             }
             else if (Start.Text == "Save")
             {
+                // may have updated values
+                if (int.TryParse(MatchNumber.Text, out int matchTemp))
+                {
+                    item.MatchNumber = matchTemp;
+                    match = matchTemp;
+                }
+                if (int.TryParse(TeamNumber.Text, out int teamTemp))
+                {
+                    item.TeamNumber = teamTemp;
+                }
+
                 // store the screen fields in the record
                 SaveFields();
 

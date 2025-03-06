@@ -6,12 +6,10 @@ public partial class MainPage
 {
     public void EnableTopRow(bool enable)
     {
-        MatchNumber.IsEnabled = enable;
-        TeamNumber.IsEnabled = enable;
+        MatchNumber.IsEnabled = true;
+        TeamNumber.IsEnabled = true;
         FormBody.IsVisible = !enable;
         Start.Text = enable ? "Start" : "Save";
-        MatchNumber.TextColor = enable ? Colors.White : Colors.Gray;
-        TeamNumber.TextColor = enable ? Colors.White : Colors.Gray;
     }
 
     public static bool ValidateMatchNumber(string matchNumber)
