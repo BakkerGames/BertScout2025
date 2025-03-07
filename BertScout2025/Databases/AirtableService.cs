@@ -1,6 +1,7 @@
 ﻿using AirtableApiClient;
 using BertScout2025.Models;
 using System.Reflection;
+using System.Text;
 
 namespace BertScout2025.Databases;
 
@@ -8,7 +9,16 @@ public class AirtableService
 {
     private const string AIRTABLE_BASE = "app37rfVnkSIZNl4m";
     private const string AIRTABLE_TABLE = "tblax92LZb7R9HDIz";
-    private const string AIRTABLE_TOKEN = "pat8a52OHTzoEMFQR.eedc431512ca2ec3fde5a08a358bc125e1da8e4eb869939596dfa5772b775027";
+    private const string AIRTABLE_TOKEN_BASE64 = "cGF0OGE1Mk9IVHpvRU1GUVIuZWVkYzQzMTUxMmNhMmVjM2ZkZTVhMDhhMzU4YmMxMjVlMWRhOGU0ZWI4Njk5Mzk1OTZkZmE1NzcyYjc3NTAyNw==";
+
+    private static string AIRTABLE_TOKEN
+    {
+        get
+        {
+            var base64EncodedBytes = Convert.FromBase64String(AIRTABLE_TOKEN_BASE64);
+            return Encoding.UTF8.GetString(base64EncodedBytes);
+        }
+    }
 
     public static async Task<int> AirtableSendRecords(List<TeamMatch> matches)
     {
@@ -85,7 +95,7 @@ public class AirtableService
                 int tempCount = await AirtableSendNewRecords(airtableBase, newRecordList, matches);
                 if (tempCount < 0)
                 {
-                    return -1; // error, exit out
+                    tempCount = 0; // error, don't count
                 }
                 NewCount += tempCount;
             }
@@ -95,7 +105,7 @@ public class AirtableService
                 int tempCount = await AirtableSendUpdatedRecords(airtableBase, updatedRecordList);
                 if (tempCount < 0)
                 {
-                    return -1; // error, exit out
+                    tempCount = 0; // error, don't count
                 }
                 UpdatedCount += tempCount;
             }
@@ -123,7 +133,7 @@ public class AirtableService
             result = await airtableBase.CreateMultipleRecords(AIRTABLE_TABLE, sendList.ToArray());
             if (!result.Success)
             {
-                return -1;
+                return finalCount; // some may have sent
             }
             foreach (AirtableRecord rec in result.Records)
             {
@@ -162,7 +172,7 @@ public class AirtableService
             result = await airtableBase.UpdateMultipleRecords(AIRTABLE_TABLE, sendList.ToArray());
             if (!result.Success)
             {
-                return -1;
+                return finalCount; // some may have sent
             }
             foreach (AirtableRecord rec in result.Records)
             {

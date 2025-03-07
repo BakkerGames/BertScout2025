@@ -23,8 +23,15 @@ public partial class AirtablePage
 
             List<TeamMatch> matches = await db.GetItemsAsync();
             var count = await AirtableService.AirtableSendRecords(matches);
-            var showS = (count == 1) ? "" : "s";
-            AirtableUpdatedLabel.Text = $"Send {count} record{showS} to Airtable";
+            if (count < 0)
+            {
+                AirtableUpdatedLabel.Text = $"Error while sending some records to Airtable";
+            }
+            else
+            {
+                var showS = (count == 1) ? "" : "s";
+                AirtableUpdatedLabel.Text = $"Sent {count} record{showS} to Airtable";
+            }
             foreach (TeamMatch item in matches
                 .OrderBy(x => $"{x.MatchNumber,3}{x.TeamNumber,5}"))
             {
@@ -47,8 +54,6 @@ public partial class AirtablePage
             AirtableSend.IsEnabled = true;
             Globals.item = new();
             Globals.viewFormBody = false;
-            //Routing.RegisterRoute("mainpage", typeof(MainPage));
-            //await Shell.Current.GoToAsync("mainpage");
         }
     }
 
