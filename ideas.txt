@@ -1,0 +1,13 @@
+leave automatically when do anything in auto
+
+color the refresh list
+
+better airtable results list margins
+
+unique by guid, not match/team
+
+delete do it for real
+
+get rid of that keyboard after "Start"
+
+add "Only does algae." in comment list
