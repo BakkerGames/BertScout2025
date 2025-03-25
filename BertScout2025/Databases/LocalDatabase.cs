@@ -60,7 +60,6 @@ public class LocalDatabase
     {
         await Init();
         return await Database.Table<TeamMatch>()
-            .Where(i => !i.Deleted)
             .ToListAsync();
     }
 
@@ -69,7 +68,6 @@ public class LocalDatabase
         await Init();
         return await Database.Table<TeamMatch>()
             .Where(i => i.Changed)
-            .Where(i => !i.Deleted)
             .ToListAsync();
     }
 
@@ -78,7 +76,6 @@ public class LocalDatabase
         await Init();
         return await Database.Table<TeamMatch>()
             .Where(i => i.TeamNumber == team)
-            .Where(i => !i.Deleted)
             .OrderBy(i => i.MatchNumber)
             .ToListAsync();
     }
@@ -88,16 +85,6 @@ public class LocalDatabase
         await Init();
         return await Database.Table<TeamMatch>()
             .Where(i => i.MatchNumber == match && i.TeamNumber == team)
-            .Where(i => !i.Deleted)
-            .FirstOrDefaultAsync();
-    }
-
-    public async Task<TeamMatch> GetTeamMatchDeletedAsync(int match, int team)
-    {
-        await Init();
-        return await Database.Table<TeamMatch>()
-            .Where(i => i.MatchNumber == match && i.TeamNumber == team)
-            .Where(i => i.Deleted)
             .FirstOrDefaultAsync();
     }
 
@@ -106,7 +93,6 @@ public class LocalDatabase
         await Init();
         return await Database.Table<TeamMatch>()
             .Where(i => i.Id == id)
-            .Where(i => !i.Deleted)
             .FirstOrDefaultAsync();
     }
 
@@ -118,7 +104,6 @@ public class LocalDatabase
             return await Database.UpdateAsync(item);
         }
         var oldItem = await GetTeamMatchAsync(item.MatchNumber, item.TeamNumber);
-        oldItem ??= await GetTeamMatchDeletedAsync(item.MatchNumber, item.TeamNumber);
         if (oldItem != null)
         {
             item.Id = oldItem.Id;
@@ -137,12 +122,10 @@ public class LocalDatabase
         await Init();
         var item = await Database.Table<TeamMatch>()
             .Where(i => i.TeamNumber == team && i.MatchNumber == match)
-            .Where(i => !i.Deleted)
             .FirstOrDefaultAsync();
         if (item != null)
         {
-            item.Deleted = true;
-            await Database.UpdateAsync(item);
+            await Database.DeleteAsync(item);
         }
     }
 }

@@ -15,10 +15,16 @@ namespace BertScout2025
         {
             InitializeComponent();
             CommentPicker.Items.Clear();
+            DefensePicker.Items.Clear();
 
             foreach (string s in CommentList)
             {
                 CommentPicker.Items.Add(s);
+            }
+
+            for (int i = 0; i <= 10; i++)
+            {
+                DefensePicker.Items.Add(i.ToString());
             }
 
             if (Globals.viewFormBody)
@@ -31,6 +37,7 @@ namespace BertScout2025
                 Globals.viewFormBody = false;
 
                 Load_Match();
+                Start.Focus();
             }
         }
 
@@ -93,6 +100,7 @@ namespace BertScout2025
                 };
 
                 Load_Match();
+                Start.Focus();
             }
             else if (Start.Text == "Save")
             {
@@ -156,6 +164,7 @@ namespace BertScout2025
         {
             item.Auto_Coral_L1++;
             LabelAutoCoralL1.Text = item.Auto_Coral_L1.ToString();
+            SetButton_Leave(true);
             SaveFields();
         }
 
@@ -174,6 +183,7 @@ namespace BertScout2025
         {
             item.Auto_Coral_L2++;
             LabelAutoCoralL2.Text = item.Auto_Coral_L2.ToString();
+            SetButton_Leave(true);
             SaveFields();
         }
 
@@ -192,6 +202,7 @@ namespace BertScout2025
         {
             item.Auto_Coral_L3++;
             LabelAutoCoralL3.Text = item.Auto_Coral_L3.ToString();
+            SetButton_Leave(true);
             SaveFields();
         }
 
@@ -210,6 +221,7 @@ namespace BertScout2025
         {
             item.Auto_Coral_L4++;
             LabelAutoCoralL4.Text = item.Auto_Coral_L4.ToString();
+            SetButton_Leave(true);
             SaveFields();
         }
 
@@ -227,6 +239,7 @@ namespace BertScout2025
         {
             item.Auto_Processor++;
             LabelAutoProcessor.Text = item.Auto_Processor.ToString();
+            SetButton_Leave(true);
             SaveFields();
         }
 
@@ -244,6 +257,7 @@ namespace BertScout2025
         {
             item.Auto_Barge++;
             LabelAutoBarge.Text = item.Auto_Barge.ToString();
+            SetButton_Leave(true);
             SaveFields();
         }
 
@@ -383,6 +397,18 @@ namespace BertScout2025
                 SetButton_Parked(false);
                 SetButton_ShallowCage(false);
             }
+            SaveFields();
+        }
+
+        private void DefensePicker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (DefensePicker.SelectedIndex < 0)
+            {
+                DefensePickerValue.Text = "";
+                return;
+            }
+            DefensePickerValue.Text = DefensePicker.SelectedIndex.ToString();
+            item.Defense_Score = DefensePicker.SelectedIndex;
             SaveFields();
         }
 

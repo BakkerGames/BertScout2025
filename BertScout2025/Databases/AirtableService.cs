@@ -7,8 +7,11 @@ namespace BertScout2025.Databases;
 
 public class AirtableService
 {
+    // This is the Airtable base and table keys. A new base and table has to be created each year, with new keys.
     private const string AIRTABLE_BASE = "app37rfVnkSIZNl4m";
     private const string AIRTABLE_TABLE = "tblax92LZb7R9HDIz";
+
+    // This is the Airtable token converted to Base64. This has to be done manually and inserted here.
     private const string AIRTABLE_TOKEN_BASE64 = "cGF0OGE1Mk9IVHpvRU1GUVIuZWVkYzQzMTUxMmNhMmVjM2ZkZTVhMDhhMzU4YmMxMjVlMWRhOGU0ZWI4Njk5Mzk1OTZkZmE1NzcyYjc3NTAyNw==";
 
     private static string AIRTABLE_TOKEN

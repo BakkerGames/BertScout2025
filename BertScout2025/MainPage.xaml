@@ -659,6 +659,38 @@
                         >
 
                         <Label
+                            Text="Defense Score:"
+                            Margin="10,6,0,0"
+                            FontSize="{OnPlatform WinUI=Small, Android=Medium}"
+                            />
+
+                        <Label
+                            x:Name="DefensePickerValue"
+                            Text="0"
+                            Margin="10,6,0,0"
+                            FontSize="{OnPlatform WinUI=Small, Android=Medium}"
+                            />
+
+                        <Picker
+                            x:Name="DefensePicker"
+                            SelectedIndexChanged="DefensePicker_SelectedIndexChanged"
+                            TextColor="Green"
+                            BackgroundColor="Green"
+                            WidthRequest="50"
+                            HorizontalOptions="CenterAndExpand"
+                            HeightRequest="32"
+                            Margin="10,0,0,0"
+                            FontSize="{OnPlatform WinUI=Small, Android=Medium}"
+                            />
+
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout
+                        Margin="0,5,0,0"
+                        HorizontalOptions="Center"
+                        >
+
+                        <Label
                             Text="Select comments:"
                             Margin="10,6,0,0"
                             FontSize="{OnPlatform WinUI=Small, Android=Medium}"

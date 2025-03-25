@@ -17,7 +17,6 @@ public class TeamMatch : BaseModel
 
     public bool Changed { get; set; }
 
-    public bool Deleted { get; set; }
     #endregion
 
     [Indexed(Name = "TeamMatchUnique", Order = 1, Unique = true)]
@@ -54,6 +53,8 @@ public class TeamMatch : BaseModel
     public bool Endgame_Deep_Cage { get; set; } = false;
 
     // overall
+
+    public int Defense_Score { get; set; } = 0;
 
     public string Comments { get; set; } = "";
 

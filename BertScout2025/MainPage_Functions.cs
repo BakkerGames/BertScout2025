@@ -82,6 +82,8 @@ public partial class MainPage
         SetButton_ShallowCage(item.Endgame_Shallow_Cage);
         SetButton_DeepCage(item.Endgame_Deep_Cage);
 
+        DefensePicker.SelectedIndex = item.Defense_Score;
+
         Comments.Text = item.Comments;
         CommentPicker.SelectedIndex = -1;
     }

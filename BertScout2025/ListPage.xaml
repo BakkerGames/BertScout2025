@@ -19,6 +19,7 @@
                 HorizontalOptions="Center"
                 WidthRequest="150"
                 Margin="0,10,0,0"
+                BackgroundColor="CornflowerBlue"
             />
         </ListView.Header>
         <ListView.ItemTemplate>
