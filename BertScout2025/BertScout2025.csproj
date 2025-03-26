@@ -36,11 +36,11 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 		<!-- <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion> -->
-		<Version>2025.3.7.0</Version>
+		<Version>2025.3.25.0</Version>
 		<DefaultLanguage>en</DefaultLanguage>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-		<FileVersion>2025.3.7.0</FileVersion>
-		<AssemblyVersion>2025.3.7.0</AssemblyVersion>
+		<FileVersion>2025.3.25.0</FileVersion>
+		<AssemblyVersion>2025.3.25.0</AssemblyVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-android|AnyCPU'">

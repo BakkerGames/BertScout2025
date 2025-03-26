@@ -100,7 +100,6 @@ namespace BertScout2025
                 };
 
                 Load_Match();
-                Start.Focus();
             }
             else if (Start.Text == "Save")
             {

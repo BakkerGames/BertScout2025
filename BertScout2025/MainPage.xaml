@@ -6,6 +6,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="BertScout2025.MainPage"
     BackgroundColor="{AppThemeBinding Light=White, Dark=#003300}"
+    HideSoftInputOnTapped="True"
     >
 
     <StackLayout>
@@ -659,7 +660,7 @@
                         >
 
                         <Label
-                            Text="Defense Score:"
+                            Text="Defense Effectiveness:"
                             Margin="10,6,0,0"
                             FontSize="{OnPlatform WinUI=Small, Android=Medium}"
                             />

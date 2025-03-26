@@ -14,7 +14,7 @@
 
         <Label
             x:Name="LabelAboutVersion"
-            Text="Version: 2025.3.5.0"
+            Text="Version: 2025.3.25.0"
             FontSize="{OnPlatform WinUI=Small, Android=Medium}"
             HorizontalOptions="Center"
             Margin="0,20,0,0"

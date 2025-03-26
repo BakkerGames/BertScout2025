@@ -43,7 +43,9 @@
         <ScrollView
             x:Name="ScrollResults"
             VerticalScrollBarVisibility="Always"
-            BackgroundColor="{AppThemeBinding Light=White, Dark=#003300}">
+            Margin="20,20,20,20"
+            BackgroundColor="{AppThemeBinding Light=White, Dark=#003300}"
+            >
 
             <Label
                 x:Name="AirtableResults" 
